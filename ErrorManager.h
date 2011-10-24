@@ -2,6 +2,7 @@
 #define ERRORMANAGER_H
 
 #include <string>
+#include <iostream>
 
 class ErrorManager
 {

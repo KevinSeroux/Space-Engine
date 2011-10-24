@@ -7,7 +7,7 @@ Triangles::Triangles(const Vertex& vertex1, const Vertex& vertex2, const Vertex&
     m_vertex3=vertex3;
 }
 
-void Triangles::Draw();
+void Triangles::Draw()
 {
     glBegin(GL_TRIANGLES);
     glVertex3d(m_vertex1->GetX(),m_vertex1->GetY(),m_vertex1->GetZ());

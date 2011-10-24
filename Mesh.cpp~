@@ -1,0 +1,59 @@
+#include "Mesh.h"
+
+Mesh::AddTriangle(const Triangle& triangle)
+{
+    m_triangles->push_back(1,triangle);
+}
+
+Mesh::ImportObj(const std::string& url)
+{
+    ifstream stream(url);
+    if(stream)
+    {
+	std::string line;
+	double x,y,z;
+	Vertex vertex1,vertex2,vertex3;
+	int i(0);
+
+	while(getline(stream,line)
+	    {
+		if(line.substr(0,7)=="mtllib ")
+		{
+		    
+		}
+		else if(line.substr(0,2)=="v ")
+		{
+		    istreamstring input(line);
+		    input >> x >> y >> z;
+		}
+		if(i==0)
+		    vertex1 = new Vertex(x,y,z);
+		else if(i==1)
+		    vertex2=new Vertex(x,y,z);
+		else if(i==2)
+		    vertex3 = new Vertex(x,y,z);
+		else if(i==3)
+		{
+		    m_triangles.push_back(1,new Triangles(vertex1,vertex2,vertex3));
+		    i=0;
+		}
+
+		i++;
+	    }
+	    }
+	else
+	{
+	    ErrorManager::DisplayMessage("Failed ! File : " + url " not found.");
+	}
+    }
+}
+
+Mesh::Draw()
+{
+    glBegin(GL_TRIANGLES);
+    for(int i(0); m_triangles[i]; i++)
+    {
+	m_triangles[i]->Draw();
+    }
+    glEnd();
+}
