@@ -1,0 +1,1 @@
+g++    -c -o Mesh.o Mesh.cpp

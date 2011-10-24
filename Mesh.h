@@ -12,12 +12,11 @@
 class Mesh
 {
  public:
-    Mesh();
     void AddTriangle(Triangle triangle);
-    void ImportObj(const char *url);
+    void ImportObj(const std::string url);
     void Draw();
  private:
-    std::vector<Triangle> *m_triangles;
+    std::vector<Triangle> m_triangles;
 };
 
 #endif
