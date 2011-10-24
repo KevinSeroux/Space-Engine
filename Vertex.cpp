@@ -1,6 +1,6 @@
 #include "Vertex.h"
 
-Vertex::Vertex(const float& x, const float& y, const float& z)
+Vertex::Vertex(float x, float y, float z)
 {
     m_X = x;
     m_Y = y;

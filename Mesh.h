@@ -6,17 +6,18 @@
 #include <fstream>
 #include <sstream>
 #include "Vertex.h"
-#include "Triangles.h"
+#include "Triangle.h"
 #include "ErrorManager.h"
 
 class Mesh
 {
  public:
-    void AddVertices(const Vertex& vertex);
-    void ImportObj(const std::string& url);
+    Mesh();
+    void AddTriangle(Triangle triangle);
+    void ImportObj(const char *url);
     void Draw();
  private:
-    std::vector<Triangles> *m_triangles;
+    std::vector<Triangle> *m_triangles;
 };
 
 #endif

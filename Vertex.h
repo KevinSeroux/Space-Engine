@@ -4,7 +4,7 @@
 class Vertex
 {
  public:
-    Vertex(const float& x, const float& y, const float& z);
+    Vertex(const float x, const float y, const float z);
     float GetX();
     float GetY();
     float GetZ();
