@@ -1,11 +1,5 @@
 [hades@CRYSALARCH Space-Engine]-> make
-g++ -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lGL -lGLU  -o Space-Engine ErrorManager.o Vertex.o Triangles.o Mesh.o main.o
-Mesh.o: In function `Mesh::ImportObj(std::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
-Mesh.cpp:(.text+0x843): undefined reference to `Triangle::Triangle(Vertex, Vertex, Vertex)'
-Mesh.cpp:(.text+0x911): undefined reference to `Triangle::Triangle(Vertex, Vertex, Vertex)'
-Mesh.cpp:(.text+0x9d7): undefined reference to `Triangle::Triangle(Vertex, Vertex, Vertex)'
-Mesh.o: In function `Mesh::Draw()':
-Mesh.cpp:(.text+0xc33): undefined reference to `Triangle::Draw()'
+g++ -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lGL -lGLU  -o Space-Engine ErrorManager.o Vertex.o Triangle.o Mesh.o main.o
 main.o: In function `Draw(float const&, float const&, float const&)':
 main.cpp:(.text+0x42c): undefined reference to `Mesh::ImportObj(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
 collect2: ld a retourné 1 code d'état d'exécution
