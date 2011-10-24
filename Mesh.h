@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include <sstream>
 #include "Vertex.h"
 #include "Triangle.h"
 #include "ErrorManager.h"

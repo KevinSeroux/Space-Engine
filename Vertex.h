@@ -5,6 +5,7 @@ class Vertex
 {
  public:
     Vertex(const float x, const float y, const float z);
+    Vertex();
     float GetX();
     float GetY();
     float GetZ();

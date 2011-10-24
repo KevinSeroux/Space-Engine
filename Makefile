@@ -1,4 +1,4 @@
-SOURCES =	ErrorManager.cpp Vertex.cpp Triangles.cpp Mesh.cpp main.cpp
+SOURCES =	ErrorManager.cpp Vertex.cpp Triangle.cpp Mesh.cpp main.cpp
 OBJECTS	=	$(SOURCES:.cpp=.o)
 TARGET	=	Space-Engine
 LIBS	=	$(shell sdl-config --libs) -lGL -lGLU 

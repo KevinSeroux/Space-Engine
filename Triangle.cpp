@@ -1,13 +1,13 @@
-#include "Triangles.h"
+#include "Triangle.h"
 
-Triangles::Triangles(Vertex vertex1, Vertex vertex2, Vertex vertex3)
+Triangle::Triangle(Vertex& vertex1, Vertex& vertex2, Vertex& vertex3)
 {
     m_vertex1=vertex1;
     m_vertex2=vertex2;
     m_vertex3=vertex3;
 }
 
-void Triangles::Draw()
+void Triangle::Draw()
 {
     glBegin(GL_TRIANGLES);
     glVertex3d(m_vertex1.GetX(),m_vertex1.GetY(),m_vertex1.GetZ());

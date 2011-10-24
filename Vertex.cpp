@@ -7,6 +7,8 @@ Vertex::Vertex(float x, float y, float z)
     m_Z = z;
 }
 
+Vertex::Vertex() {}
+
 float Vertex::GetX()
 {
     return m_X;
