@@ -88,7 +88,7 @@ void Draw(const float& xPos, const float& yPos, const float& zPos)
 
     //Draw
     Mesh myMesh;
-    myMesh.ImportObj("Data/plane.obj");
+    myMesh.ImportObj("Data/cubetriangle.obj");
     myMesh.Draw();
 
     glFlush();
