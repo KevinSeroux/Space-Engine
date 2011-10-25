@@ -50,11 +50,11 @@ void Mesh::ImportObj(const std::string url)
 		else
 		    sscanf(line.c_str(),"f %d %d %d %d", vNumber[0], vNumber[3], vNumber[5], vNumber[9]);
 		if(vNumber[9]==0)
-		    m_triangles.push_back(Triangle(vertices[vNumber[0]],vertices[vNumber[3]],vertices[vNumber[6]])); 
+		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1])); 
 		else
 		{
-		    m_triangles.push_back(Triangle(vertices[vNumber[0]],vertices[vNumber[3]],vertices[vNumber[6]]));
-		    m_triangles.push_back(Triangle(vertices[vNumber[3]],vertices[vNumber[6]],vertices[vNumber[9]]));
+		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
+		    m_triangles.push_back(Triangle(vertices[vNumber[3]-1],vertices[vNumber[6]-1],vertices[vNumber[9]-1]));
 		}
 	    }
 	}
