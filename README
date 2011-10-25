@@ -10,11 +10,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 ____________________________________________________________________
-Compilation :
+Launch :
 
-[hades@CRYSALARCH Space-Engine]-> make
-g++ -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lGL -lGLU  -o Space-Engine ErrorManager.o Vertex.o Triangle.o Mesh.o main.o
-main.o: In function `Draw(float const&, float const&, float const&)':
-main.cpp:(.text+0x42c): undefined reference to `Mesh::ImportObj(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
-collect2: ld a retourné 1 code d'état d'exécution
-make: *** [all] Erreur 1
+[hades@CRYSALARCH Space-Engine]-> ./Space-Engine
+L'application à détecté une erreur :
+
+Erreur de segmentation
