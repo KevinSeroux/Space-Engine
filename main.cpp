@@ -88,8 +88,8 @@ void Draw(const float& xPos, const float& yPos, const float& zPos)
 
     //Draw
     Mesh myMesh;
-    myMesh.ImportObj("Data/cube.obj");
-    //myMesh.Draw();
+    myMesh.ImportObj("Data/plane.obj");
+    myMesh.Draw();
 
     glFlush();
     SDL_GL_SwapBuffers();
