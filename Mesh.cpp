@@ -19,7 +19,7 @@ void Mesh::ImportObj(const std::string url)
 	{
 	    if(line.substr(0,7)=="mtllib ")
 	    {
-		std::string urlMtllib(line.substr(7,line.size()));
+		std::string urlMtllib("Data/" + line.substr(7,line.size()));
 		std::ifstream streamMtllib(urlMtllib.c_str());
 		if(streamMtllib)
 		{
@@ -37,13 +37,13 @@ void Mesh::ImportObj(const std::string url)
 		}
 		else
 		{
-		    sscanf(line.c_str(),"v %e %e %e",x,y,z);
-		    vertices.push_back(Vertex(x,y,z));
+		    /*sscanf(line.c_str(),"v %f %f %f",x,y,z);
+		    vertices.push_back(Vertex(x,y,z));*/
 		}
 	    }
 	    else if(line[0]=='f')
 	    {
-		if(line.find("//")!=std::string::npos)
+		/*if(line.find("//")!=std::string::npos)
 		    sscanf(line.c_str(),"f %d//%d %d//%d %d//%d %d//%d",vNumber[0],vNumber[2], vNumber[3],vNumber[5], vNumber[6],vNumber[8], vNumber[9],vNumber[10]);
 		else if(line.find("/"))
 		    sscanf(line.c_str(),"f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", vNumber[0],vNumber[1],vNumber[2], vNumber[3],vNumber[4],vNumber[5], vNumber[6],vNumber[7],vNumber[8], vNumber[9],vNumber[10],vNumber[11]);
@@ -55,7 +55,7 @@ void Mesh::ImportObj(const std::string url)
 		{
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
 		    m_triangles.push_back(Triangle(vertices[vNumber[3]-1],vertices[vNumber[6]-1],vertices[vNumber[9]-1]));
-		}
+		    }*/
 	    }
 	}
     }
