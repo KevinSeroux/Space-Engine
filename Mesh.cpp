@@ -45,11 +45,11 @@ void Mesh::ImportObj(const std::string url)
 	    }
 	    else if(line[0]=='f')
 	    {
-		/*if(line.find("//")!=std::string::npos)
+		if(line.find("//")!=std::string::npos)
 		    sscanf(line.c_str(),"f %d//%d %d//%d %d//%d %d//%d",&vNumber[0],&vNumber[2], &vNumber[3],&vNumber[5], &vNumber[6],&vNumber[8], &vNumber[9],&vNumber[11]);
-		else if(line.find("/"))
+		else if(line.find("/")!=std::string::npos)
 		    sscanf(line.c_str(),"f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", &vNumber[0],&vNumber[1],&vNumber[2], &vNumber[3],&vNumber[4],&vNumber[5], &vNumber[6],&vNumber[7],&vNumber[8], &vNumber[9],&vNumber[10],&vNumber[11]);
-		    else*/
+		else
 		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6], &vNumber[9]);
 		if(vNumber[9]==0)
 		{
