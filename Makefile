@@ -1,20 +1,21 @@
-SOURCES =	ErrorManager.cpp Vertex.cpp Triangle.cpp Mesh.cpp main.cpp
-OBJECTS	=	$(SOURCES:.cpp=.o)
-TARGET	=	Space-Engine
-LIBS	=	$(shell sdl-config --libs) -lGL -lGLU 
+CPP=		g++
+CXXFLAGS=	-W -Wall -ansi -pedantic
+LDFLAGS=	$(shell sdl-config --libs) -lGL -lGLU
+EXEC=		Space-Engine
+SRC=		$(wildcard *.cpp)
+OBJ=		$(SRC:.c=.o)
 
-all: $(OBJECTS)
-	g++ $(LIBS) -o $(TARGET) $(OBJECTS)
+all: $(EXEC)
 
-%o: %cpp
-	g++ -o $@ -c $<
+$(EXEC): $(OBJ)
+	$(CPP) $(LDFLAGS) -o $(EXEC) $(OBJ)
 
-x: all
-	./$(TARGET)
+main.o:
+%.o: %.cpp
+	$(CPP) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJECTS)
+	rm *.o
 
-superclean : clean
-	rm -rf $(TARGET)
-
+mrproper: clean
+	rm $(EXEC)
