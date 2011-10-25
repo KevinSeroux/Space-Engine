@@ -46,11 +46,11 @@ void Mesh::ImportObj(const std::string url)
 	    else if(line[0]=='f')
 	    {
 		if(line.find("//")!=std::string::npos)
-		  sscanf(line.c_str(),"f %d//%d %d//%d %d//%d %d//%d",&vNumber[0],&vNumber[2], &vNumber[3],&vNumber[5], &vNumber[6],&vNumber[8], &vNumber[9],&vNumber[10]);
+		    sscanf(line.c_str(),"f %d//%d %d//%d %d//%d %d//%d",&vNumber[0],&vNumber[2], &vNumber[3],&vNumber[5], &vNumber[6],&vNumber[8], &vNumber[9],&vNumber[11]);
 		else if(line.find("/"))
 		    sscanf(line.c_str(),"f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", &vNumber[0],&vNumber[1],&vNumber[2], &vNumber[3],&vNumber[4],&vNumber[5], &vNumber[6],&vNumber[7],&vNumber[8], &vNumber[9],&vNumber[10],&vNumber[11]);
 		else
-		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[5], &vNumber[9]);
+		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6], &vNumber[9]);
 		if(vNumber[9]==0)
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1])); 
 		else
