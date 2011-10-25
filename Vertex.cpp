@@ -24,13 +24,7 @@ float Vertex::GetZ()
     return m_Z;
 }
 
-std::string Vertex::GetXYZ()
+void Vertex::Print()
 {
-    std::string tmp;
-    tmp += m_X;
-    tmp += ';';
-    tmp += m_Y;
-    tmp += ';';
-    tmp += m_Z;
-    return tmp;
+    std::cout << m_X << ";" << m_Y << ";" << m_Z;
 }

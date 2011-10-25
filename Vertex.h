@@ -1,7 +1,7 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
-#include <string>
+#include <iostream>
 
 class Vertex
 {
@@ -11,7 +11,7 @@ class Vertex
     float GetX();
     float GetY();
     float GetZ();
-    std::string GetXYZ();
+    void Print();
  private:
     float m_X;
     float m_Y;

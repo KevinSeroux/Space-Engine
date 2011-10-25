@@ -53,14 +53,31 @@ void Mesh::ImportObj(const std::string url)
 		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6], &vNumber[9]);
 		if(vNumber[9]==0)
 		{
-		    std::cout << "C01 :-> " << vertices[vNumber[0]-1].GetXYZ() << " | C02 :-> " << vertices[vNumber[3]-1].GetXYZ() << " | C03 :-> " << vertices[vNumber[3]-1].GetXYZ() << std::endl;
+		    std::cout << std::endl << " CO1 :-> ";
+		    vertices[vNumber[0]-1].Print();
+		    std::cout << std::endl << " CO2 :-> ";
+		    vertices[vNumber[3]-1].Print();
+		    std::cout << std::endl << " CO3 :-> ";
+		    vertices[vNumber[6]-1].Print();
+		    std::cout << std::endl << std::endl;
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1])); 
 		}
 		else
 		{
-		    std::cout << "C01 :-> " << vertices[vNumber[0]-1].GetXYZ() << " | CO2 :-> " << vertices[vNumber[3]-1].GetXYZ() << " | C03 :-> " << vertices[vNumber[6]-1].GetXYZ() << std::endl;
+		    std::cout << std::endl << " CO1 :-> ";
+		    vertices[vNumber[0]-1].Print();
+		    std::cout << std::endl << " CO2 :-> ";
+		    vertices[vNumber[3]-1].Print();
+		    std::cout << std::endl << " CO3 :-> ";
+		    vertices[vNumber[6]-1].Print();
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
-		    std::cout << "CO2 :-> " << vertices[vNumber[3]-1].GetXYZ() << " | C03 :-> " << vertices[vNumber[6]-1].GetXYZ() << " | C04 :-> " << vertices[vNumber[9]-1].GetXYZ() << std::endl;
+		    std::cout << std::endl << " CO4 :-> ";
+		    vertices[vNumber[3]-1].Print();
+		    std::cout << std::endl << " CO5 :-> ";
+		    vertices[vNumber[6]-1].Print();
+		    std::cout << std::endl << " CO6 :-> ";
+		    vertices[vNumber[9]-1].Print();
+		    std::cout << std::endl << std::endl;
 		    m_triangles.push_back(Triangle(vertices[vNumber[3]-1],vertices[vNumber[6]-1],vertices[vNumber[9]-1]));
 		}
 	    }
