@@ -13,6 +13,9 @@ void Mesh::ImportObj(const std::string url)
 	std::string line;
 	float x,y,z;
 	int vNumber[11];
+	for(unsigned int i(0); i<=11; i++)
+	    vNumber[i]=0;
+
 	std::vector<Vertex> vertices;
 
 	while(getline(stream,line))
@@ -93,5 +96,4 @@ void Mesh::Draw()
     {
 	m_triangles[i].Draw();
     }
-    glEnd();
 }
