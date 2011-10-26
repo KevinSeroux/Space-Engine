@@ -9,6 +9,7 @@ class Triangle
  public:
     Triangle(Vertex& vertex1, Vertex& vertex2, Vertex& vertex3);
     void Draw();
+    void Print();
  private :
     Vertex m_vertex1;
     Vertex m_vertex2;

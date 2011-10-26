@@ -18,6 +18,8 @@ void Mesh::ImportObj(const std::string url)
 
 	std::vector<Vertex> vertices;
 
+	std::cout << "New Round !!!";
+
 	while(getline(stream,line))
 	{
 	    if(line.substr(0,7)=="mtllib ")
@@ -56,31 +58,11 @@ void Mesh::ImportObj(const std::string url)
 		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6], &vNumber[9]);
 		if(vNumber[9]==0)
 		{
-		    std::cout << std::endl << " CO1 :-> ";
-		    vertices[vNumber[0]-1].Print();
-		    std::cout << std::endl << " CO2 :-> ";
-		    vertices[vNumber[3]-1].Print();
-		    std::cout << std::endl << " CO3 :-> ";
-		    vertices[vNumber[6]-1].Print();
-		    std::cout << std::endl << std::endl;
-		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1])); 
+		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
 		}
 		else
 		{
-		    std::cout << std::endl << " CO1 :-> ";
-		    vertices[vNumber[0]-1].Print();
-		    std::cout << std::endl << " CO2 :-> ";
-		    vertices[vNumber[3]-1].Print();
-		    std::cout << std::endl << " CO3 :-> ";
-		    vertices[vNumber[6]-1].Print();
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
-		    std::cout << std::endl << " CO4 :-> ";
-		    vertices[vNumber[3]-1].Print();
-		    std::cout << std::endl << " CO5 :-> ";
-		    vertices[vNumber[6]-1].Print();
-		    std::cout << std::endl << " CO6 :-> ";
-		    vertices[vNumber[9]-1].Print();
-		    std::cout << std::endl << std::endl;
 		    m_triangles.push_back(Triangle(vertices[vNumber[3]-1],vertices[vNumber[6]-1],vertices[vNumber[9]-1]));
 		}
 	    }
@@ -92,8 +74,13 @@ void Mesh::ImportObj(const std::string url)
 
 void Mesh::Draw()
 {
-    for(int i(0); i<=m_triangles.size(); i++)
+    for(unsigned int i(0); i<= m_triangles.size()-1; i++)
     {
+	std::cout << "-------------------------------------";
 	m_triangles[i].Draw();
+	m_triangles[i].Print();
+	std::cout << "-------------------------------------";
     }
+
+    std::cout << "End Round !!!" << std::endl << std::endl;
 }

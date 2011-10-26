@@ -26,5 +26,5 @@ float Vertex::GetZ()
 
 void Vertex::Print()
 {
-    std::cout << m_X << ";" << m_Y << ";" << m_Z;
+    std::cout << "    /* Vertex : */  " << "glVertex3d(" << m_X << "," << m_Y << "," << m_Z << ");" << std::endl;
 }

@@ -7,6 +7,8 @@
 #define WIDTH 800
 #define HEIGHT 600
 
+Mesh myMesh;
+
 void Draw(const float& xPos, const float& yPos, const float& zPos);
 
 int main(int argc, char *argv[])
@@ -32,6 +34,9 @@ int main(int argc, char *argv[])
     int startTime;
     float time;
     int startTimeFPS = SDL_GetTicks();
+
+    //Notre mesh
+    myMesh.ImportObj("Data/cubetriangle.obj");
 
     while(SDL_WaitEvent(&events))
     {
@@ -86,9 +91,6 @@ void Draw(const float& xPos, const float& yPos, const float& zPos)
 
     gluLookAt(xPos,yPos,zPos,0,0,0,0,0,1);
 
-    //Draw
-    Mesh myMesh;
-    myMesh.ImportObj("Data/cubetriangle.obj");
     myMesh.Draw();
 
     glFlush();
