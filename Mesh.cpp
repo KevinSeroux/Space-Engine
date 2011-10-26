@@ -57,9 +57,7 @@ void Mesh::ImportObj(const std::string url)
 		else
 		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6], &vNumber[9]);
 		if(vNumber[9]==0)
-		{
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
-		}
 		else
 		{
 		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
@@ -77,6 +75,11 @@ void Mesh::Draw()
     for(unsigned int i(0); i<= m_triangles.size()-1; i++)
     {
 	std::cout << "-------------------------------------";
+	/*glBegin(GL_TRIANGLES);
+	glVertex3d(m_triangles[i].GetVertices()[0].GetX(),m_triangles[i].GetVertices()[0].GetY(),m_triangles[i].GetVertices()[0].GetZ());
+	glVertex3d(m_triangles[i].GetVertices()[1].GetX(),m_triangles[i].GetVertices()[1].GetY(),m_triangles[i].GetVertices()[1].GetZ());
+	glVertex3d(m_triangles[i].GetVertices()[2].GetX(),m_triangles[i].GetVertices()[2].GetY(),m_triangles[i].GetVertices()[2].GetZ());
+	glEnd();*/
 	m_triangles[i].Draw();
 	m_triangles[i].Print();
 	std::cout << "-------------------------------------";

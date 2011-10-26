@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     int startTimeFPS = SDL_GetTicks();
 
     //Notre mesh
-    myMesh.ImportObj("Data/cubetriangle.obj");
+    myMesh.ImportObj("Data/cube.obj");
 
     while(SDL_WaitEvent(&events))
     {
