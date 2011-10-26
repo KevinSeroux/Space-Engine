@@ -29,7 +29,7 @@ void Mesh::ImportObj(const std::string url)
 		}
 		else
 		{
-		    ErrorManager::DisplayMessage("Failed to open mtllib file : " + urlMtllib + " defined by " + url);
+		    Logger::DisplayMessage("Failed to open mtllib file : " + urlMtllib + " defined by " + url);
 		}
 	    }
 	    else if(line[0]=='v')
@@ -44,7 +44,7 @@ void Mesh::ImportObj(const std::string url)
 		    vertices.push_back(Vertex(x,y,z));
 		}
 		else if(line[1]!='t')
-		    ErrorManager::DisplayMessage("Invalid file : " + line);
+		    Logger::DisplayMessage("Invalid file : " + line);
 	    }
 	    else if(line[0]=='f')
 	    {
@@ -87,7 +87,7 @@ void Mesh::ImportObj(const std::string url)
 	}
     }
     else
-	ErrorManager::DisplayMessage("Failed to open : " + url);
+	Logger::DisplayMessage("Failed to open : " + url);
 }
 
 void Mesh::Draw()

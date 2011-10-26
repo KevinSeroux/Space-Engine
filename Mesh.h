@@ -6,7 +6,7 @@
 #include <fstream>
 #include "Vertex.h"
 #include "Triangle.h"
-#include "ErrorManager.h"
+#include "Logger.h"
 
 class Mesh
 {
