@@ -12,7 +12,4 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 ____________________________________________________________________
 Launch :
 
-[hades@CRYSALARCH Space-Engine]-> ./Space-Engine
-L'application à détecté une erreur :
-
-Erreur de segmentation
+Deformation of *.obj
