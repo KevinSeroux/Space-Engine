@@ -12,13 +12,11 @@ void Mesh::ImportObj(const std::string url)
     {
 	std::string line;
 	float x,y,z;
-	int vNumber[11];
+	int vNumber[8];
 	for(unsigned int i(0); i<=11; i++)
 	    vNumber[i]=0;
 
 	std::vector<Vertex> vertices;
-
-	std::cout << "New Round !!!";
 
 	while(getline(stream,line))
 	{
@@ -38,7 +36,7 @@ void Mesh::ImportObj(const std::string url)
 	    {
 		if(line[1]=='n')
 		{
-		    //Si c'est une normale (normals) (éclairage)
+		    //If it's a normal (useful for lighting)
 		}
 		else if(line[1]==' ')
 		{
@@ -48,21 +46,16 @@ void Mesh::ImportObj(const std::string url)
 		else if(line[1]!='t')
 		    Logger::DisplayMessage("Invalid file : " + line);
 	    }
-	    else if(line[0]=='f')
+	    else if(line[0]=='f') //The engine support only faces with 3 vertices for reason of rapidity
 	    {
 		if(line.find("//")!=std::string::npos)
-		    sscanf(line.c_str(),"f %d//%d %d//%d %d//%d %d//%d",&vNumber[0],&vNumber[2], &vNumber[3],&vNumber[5], &vNumber[6],&vNumber[8], &vNumber[9],&vNumber[11]);
+		    sscanf(line.c_str(),"f %d//%d %d//%d %d//%d",&vNumber[0],&vNumber[2], &vNumber[3],&vNumber[5], &vNumber[6],&vNumber[8]);
 		else if(line.find("/")!=std::string::npos)
-		    sscanf(line.c_str(),"f %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", &vNumber[0],&vNumber[1],&vNumber[2], &vNumber[3],&vNumber[4],&vNumber[5], &vNumber[6],&vNumber[7],&vNumber[8], &vNumber[9],&vNumber[10],&vNumber[11]);
+		    sscanf(line.c_str(),"f %d/%d/%d %d/%d/%d %d/%d/%d", &vNumber[0],&vNumber[1],&vNumber[2], &vNumber[3],&vNumber[4],&vNumber[5], &vNumber[6],&vNumber[7],&vNumber[8]);
 		else
-		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6], &vNumber[9]);
-		if(vNumber[9]==0)
-		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
-		else
-		{
-		    m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
-		    m_triangles.push_back(Triangle(vertices[vNumber[3]-1],vertices[vNumber[6]-1],vertices[vNumber[9]-1]));
-		}
+		    sscanf(line.c_str(),"f %d %d %d %d", &vNumber[0], &vNumber[3], &vNumber[6]);
+
+		m_triangles.push_back(Triangle(vertices[vNumber[0]-1],vertices[vNumber[3]-1],vertices[vNumber[6]-1]));
 	    }
 	}
     }
@@ -73,17 +66,5 @@ void Mesh::ImportObj(const std::string url)
 void Mesh::Draw()
 {
     for(unsigned int i(0); i<= m_triangles.size()-1; i++)
-    {
-	std::cout << "-------------------------------------";
-	/*glBegin(GL_TRIANGLES);
-	glVertex3d(m_triangles[i].GetVertices()[0].GetX(),m_triangles[i].GetVertices()[0].GetY(),m_triangles[i].GetVertices()[0].GetZ());
-	glVertex3d(m_triangles[i].GetVertices()[1].GetX(),m_triangles[i].GetVertices()[1].GetY(),m_triangles[i].GetVertices()[1].GetZ());
-	glVertex3d(m_triangles[i].GetVertices()[2].GetX(),m_triangles[i].GetVertices()[2].GetY(),m_triangles[i].GetVertices()[2].GetZ());
-	glEnd();*/
 	m_triangles[i].Draw();
-	m_triangles[i].Print();
-	std::cout << "-------------------------------------";
-    }
-
-    std::cout << "End Round !!!" << std::endl << std::endl;
 }

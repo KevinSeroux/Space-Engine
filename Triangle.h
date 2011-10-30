@@ -11,7 +11,6 @@ class Triangle
     Triangle(Vertex& vertex1, Vertex& vertex2, Vertex& vertex3);
     std::vector<Vertex> GetVertices();
     void Draw();
-    void Print();
  private :
     Vertex m_vertex1;
     Vertex m_vertex2;
