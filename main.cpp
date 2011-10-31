@@ -9,7 +9,7 @@
 
 Mesh myMesh;
 
-void Draw(const float& xPos, const float& yPos, const float& zPos);
+void Draw(const int& xPos, const int& yPos, const int& zPos);
 
 int main(int argc, char *argv[])
 {
@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
     SDL_EnableKeyRepeat(10,10);
 
     SDL_Event events;
-    float xPos(3);
-    float yPos(4);
-    float zPos(2);
+    int xPos(3);
+    int yPos(4);
+    int zPos(2);
 
     //Variables pour les perfs
     int startTime;
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     int startTimeFPS = SDL_GetTicks();
 
     //Notre mesh
-    myMesh.ImportObj("Data/cube.obj");
+    myMesh.ImportObj("Data/cubecolor.obj");
 
     while(SDL_WaitEvent(&events))
     {
@@ -51,22 +51,22 @@ int main(int argc, char *argv[])
 	    switch(events.key.keysym.sym)
 	    {
 	    case SDLK_UP:
-		yPos+=0.1;
+		yPos+=1;
 		break;
 	    case SDLK_DOWN:
-		yPos-=0.1;
+		yPos-=1;
 		break;
 	    case SDLK_LEFT:
-		xPos+=0.1;
+		xPos+=1;
 		break;
 	    case SDLK_RIGHT:
-		xPos-=0.1;
+		xPos-=1;
 		break;
 	    case SDLK_z:
-		zPos+=0.1;
+		zPos+=1;
 		break;
 	    case SDLK_s:
-		zPos-=0.1;
+		zPos-=1;
 		break;
 	    }
 	    break;
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void Draw(const float& xPos, const float& yPos, const float& zPos)
+void Draw(const int& xPos, const int& yPos, const int& zPos)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

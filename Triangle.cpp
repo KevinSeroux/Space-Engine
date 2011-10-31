@@ -1,20 +1,29 @@
 #include "Triangle.h"
 
-Triangle::Triangle(Vertex& vertex1, Vertex& vertex2, Vertex& vertex3)
+Triangle::Triangle(Vec3& vertex1, Vec3& vertex2, Vec3& vertex3, Material& material)
 {
-    m_vertex1=vertex1;
-    m_vertex2=vertex2;
-    m_vertex3=vertex3;
+    m_vertex1 = vertex1;
+    m_vertex2 = vertex2;
+    m_vertex3 = vertex3;
+    m_material = material;
 }
 
-void Triangle::Draw()
+Vec3 Triangle::GetVertex1()
 {
-    glBegin(GL_TRIANGLES);
-    glColor3ub(255,0,0);
-    glVertex3f(m_vertex1.GetX(),m_vertex1.GetY(),m_vertex1.GetZ());
-    glColor3ub(0,255,0);
-    glVertex3f(m_vertex2.GetX(),m_vertex2.GetY(),m_vertex2.GetZ());
-    glColor3ub(0,0,255);
-    glVertex3f(m_vertex3.GetX(),m_vertex3.GetY(),m_vertex3.GetZ());;
-    glEnd();
+    return m_vertex1;
+}
+
+Vec3 Triangle::GetVertex2()
+{
+    return m_vertex2;
+}
+
+Vec3 Triangle::GetVertex3()
+{
+    return m_vertex3;
+}
+
+Material Triangle::GetMaterial()
+{
+    return m_material;
 }
