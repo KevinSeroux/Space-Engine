@@ -8,13 +8,13 @@ class Vec3
  public:
     Vec3(float x, float y, float z);
     Vec3();
-    void SetX(float x);
-    void SetY(float y);
-    void SetZ(float z);
+    void setX(float x);
+    void setY(float y);
+    void setZ(float z);
 
-    float GetX();
-    float GetY();
-    float GetZ();
+    float getX();
+    float getY();
+    float getZ();
  private:
     float m_X;
     float m_Y;

@@ -2,21 +2,28 @@
 #define TRIANGLE_H
 
 #include <GL/gl.h>
-#include "Vec3.h"
+#include "Vertex.h"
 #include "Material.h"
 
 class Triangle
 {
  public:
-    Triangle(Vec3& vertex1, Vec3& vertex2, Vec3& vertex3, Material& material);
-    Vec3 GetVertex1();
-    Vec3 GetVertex2();
-    Vec3 GetVertex3();
-    Material GetMaterial();
+    Triangle();
+    Triangle(Vertex vertex1, Vertex vertex2, Vertex vertex3, Material material);
+    //GET
+    Vertex getVertex1();
+    Vertex getVertex2();
+    Vertex getVertex3();
+    Material getMaterial();
+    //SET
+    void setVertex1(Vertex vertex1);
+    void setVertex2(Vertex vertex2);
+    void setVertex3(Vertex vertex3);
+    void setMaterial(Material material);
  private :
-    Vec3 m_vertex1;
-    Vec3 m_vertex2;
-    Vec3 m_vertex3;
+    Vertex m_vertex1;
+    Vertex m_vertex2;
+    Vertex m_vertex3;
     Material m_material;
 };
 

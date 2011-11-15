@@ -10,24 +10,24 @@ Vec2::Vec2() {}
 
 //SET
 
-void Vec2::SetX(float x)
+void Vec2::setX(float x)
 {
     m_X = x;
 }
 
-void Vec2::SetY(float y)
+void Vec2::setY(float y)
 {
     m_Y = y;
 }
 
 //GET
 
-float Vec2::GetX()
+float Vec2::getX()
 {
     return m_X;
 }
 
-float Vec2::GetY()
+float Vec2::getY()
 {
     return m_Y;
 }

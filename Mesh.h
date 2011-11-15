@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <iostream>
 #include "Vec3.h"
 #include "Vec2.h"
 #include "Triangle.h"
@@ -13,13 +14,10 @@
 class Mesh
 {
  public:
-    void ImportObj(const std::string url);
-    void Draw();
+    void importObj(const std::string url);
+    void draw();
  private:
     std::vector<Triangle> m_triangles;
-    std::vector<Material> m_materials;
-    std::vector<Vec3> m_normals;
-    std::vector<Vec2> m_textureCoords;
 };
 
 #endif

@@ -11,34 +11,34 @@ Vec3::Vec3() {}
 
 //SET
 
-void Vec3::SetX(float x)
+void Vec3::setX(float x)
 {
     m_X = x;
 }
 
-void Vec3::SetY(float y)
+void Vec3::setY(float y)
 {
     m_Y = y;
 }
 
-void Vec3::SetZ(float z)
+void Vec3::setZ(float z)
 {
     m_Z = z;
 }
 
 //GET
 
-float Vec3::GetX()
+float Vec3::getX()
 {
     return m_X;
 }
 
-float Vec3::GetY()
+float Vec3::getY()
 {
     return m_Y;
 }
 
-float Vec3::GetZ()
+float Vec3::getZ()
 {
     return m_Z;
 }
