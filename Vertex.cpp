@@ -1,43 +1,42 @@
 #include "Vertex.h"
 
-Vertex::Vertex() {}
-
-Vertex::Vertex(Vec3 coord, Vec3 normal)
+Vertex::Vertex(Vec3 *coord, Vec3 *normalCoord, Vec2 *textureCoord)
 {
-    m_coord = coord;
-    m_normal = normal;
+    _coord = coord;
+    _normalCoord = normalCoord;
+    _textureCoord = textureCoord;
 }
 
 //SET
 
-void Vertex::setCoord(Vec3 coord)
+void Vertex::setCoord(Vec3 *coord)
 {
-    m_coord = coord;
+    _coord = coord;
 }
 
-void Vertex::setNormal(Vec3 normal)
+void Vertex::setNormal(Vec3 *normalCoord)
 {
-    m_normal = normal;
+    _normalCoord = normalCoord;
 }
 
-void Vertex::setTexturePoint(Vec2 texturePoint)
+void Vertex::setTexturePoint(Vec2 *textureCoord)
 {
-    m_texturePoint = texturePoint;
+    _textureCoord = textureCoord;
 }
 
 //GET
 
-Vec3 Vertex::getCoord()
+Vec3* Vertex::getCoord()
 {
-    return m_coord;
+    return _coord;
 }
 
-Vec3 Vertex::getNormal()
+Vec3* Vertex::getNormal()
 {
-    return m_normal;
+    return _normalCoord;
 }
 
-Vec2 Vertex::getTexturePoint()
+Vec2* Vertex::getTexturePoint()
 {
-    return m_texturePoint;
+    return _textureCoord;
 }

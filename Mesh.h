@@ -2,22 +2,18 @@
 #define MESH_H
 
 #include <vector>
-#include <string>
-#include <fstream>
-#include <iostream>
-#include "Vec3.h"
-#include "Vec2.h"
 #include "Triangle.h"
-#include "Material.h"
-#include "Logger.h"
+#include "Drawer.h"
 
 class Mesh
 {
  public:
-    void importObj(const std::string url);
-    void draw();
+    //SET
+    void addTriangle(Triangle *triangle);
+    //GET
+    std::vector<Triangle*>* getTriangles();
  private:
-    std::vector<Triangle> m_triangles;
+    std::vector<Triangle*> *_triangles;
 };
 
 #endif

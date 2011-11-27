@@ -1,44 +1,36 @@
 #include "Vec3.h"
 
-Vec3::Vec3(float x, float y, float z)
-{
-    m_X = x;
-    m_Y = y;
-    m_Z = z;
-}
-
-Vec3::Vec3() {}
+Vec3::Vec3(float x(0), float (y), float z(0)) : Vec2(x,y), _z(z) {}
 
 //SET
 
-void Vec3::setX(float x)
-{
-    m_X = x;
-}
-
-void Vec3::setY(float y)
-{
-    m_Y = y;
-}
-
 void Vec3::setZ(float z)
 {
-    m_Z = z;
+    _z = z;
+}
+
+void Vec3::setXZ(float x, float z)
+{
+    _x = x;
+    _z = z;
+}
+
+void Vec3::setYZ(float y, float z)
+{
+    _y = y;
+    _z = z;
+}
+
+void Vec3::setXYZ(float x, float y, float z)
+{
+    _x = x;
+    _y = y;
+    _z = z;
 }
 
 //GET
 
-float Vec3::getX()
-{
-    return m_X;
-}
-
-float Vec3::getY()
-{
-    return m_Y;
-}
-
 float Vec3::getZ()
 {
-    return m_Z;
+    return _z;
 }

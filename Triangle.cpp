@@ -2,54 +2,54 @@
 
 Triangle::Triangle() {}
 
-Triangle::Triangle(Vertex vertex1, Vertex vertex2, Vertex vertex3, Material material)
+Triangle::Triangle(Vertex *vertex1, Vertex *vertex2, Vertex *vertex3, Material *material)
 {
-    m_vertex1 = vertex1;
-    m_vertex2 = vertex2;
-    m_vertex3 = vertex3;
-    m_material = material;
-}
-
-//GET
-
-Vertex Triangle::getVertex1()
-{
-    return m_vertex1;
-}
-
-Vertex Triangle::getVertex2()
-{
-    return m_vertex2;
-}
-
-Vertex Triangle::getVertex3()
-{
-    return m_vertex3;
-}
-
-Material Triangle::getMaterial()
-{
-    return m_material;
+    _vertex1 = vertex1;
+    _vertex2 = vertex2;
+    _vertex3 = vertex3;
+    _material = material;
 }
 
 //SET
 
-void Triangle::setVertex1(Vertex vertex1)
+void Triangle::setVertex1(Vertex *vertex1)
 {
-    m_vertex1 = vertex1;
+    _vertex1 = vertex1;
 }
 
-void Triangle::setVertex2(Vertex vertex2)
+void Triangle::setVertex2(Vertex *vertex2)
 {
-    m_vertex2 = vertex2;
+    _vertex2 = vertex2;
 }
 
-void Triangle::setVertex3(Vertex vertex3)
+void Triangle::setVertex3(Vertex *vertex3)
 {
-    m_vertex3 = vertex3;
+    _vertex3 = vertex3;
 }
 
-void Triangle::setMaterial(Material material)
+void Triangle::setMaterial(Material *material)
 {
-    m_material = material;
+    _material = material;
+}
+
+//GET
+
+Vertex* Triangle::getVertex1()
+{
+    return _vertex1;
+}
+
+Vertex* Triangle::getVertex2()
+{
+    return _vertex2;
+}
+
+Vertex* Triangle::getVertex3()
+{
+    return _vertex3;
+}
+
+Material* Triangle::getMaterial()
+{
+    return _material;
 }

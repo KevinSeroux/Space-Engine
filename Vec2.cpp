@@ -1,33 +1,37 @@
 #include "Vec2.h"
 
-Vec2::Vec2(float x, float y)
+Vec2::Vec2(float x(0), float y(0))
 {
-    m_X = x;
-    m_Y = y;
+    _x = x;
+    _y = y;
 }
-
-Vec2::Vec2() {}
 
 //SET
 
 void Vec2::setX(float x)
 {
-    m_X = x;
+    _x = x;
 }
 
 void Vec2::setY(float y)
 {
-    m_Y = y;
+    _y = y;
+}
+
+void Vec2::setXY(float x, float y)
+{
+    _x = x;
+    _y = y;
 }
 
 //GET
 
 float Vec2::getX()
 {
-    return m_X;
+    return _x;
 }
 
 float Vec2::getY()
 {
-    return m_Y;
+    return _y;
 }

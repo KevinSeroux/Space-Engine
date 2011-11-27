@@ -1,5 +1,5 @@
 #include <SDL/SDL.h>
-#include <GL/gl.h>
+#include <GL/glew.h>
 #include <GL/glu.h>
 #include <iostream>
 #include "Mesh.h"
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     int startTimeFPS = SDL_GetTicks();
 
     //Notre mesh
-    myMesh.importObj("Data/ship.obj");
+    myMesh.importObj("Data/untitled.obj");
 
     while(SDL_WaitEvent(&events))
     {
@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
 	    }
 	    break;
 	}
+
 	Draw();
 
 	time=(SDL_GetTicks()-startTime)*0.001;
@@ -85,6 +86,7 @@ int main(int argc, char *argv[])
 	    std::cout << "Temps : " << time << "  |  FPS : " << floor(1/time) << "  |  Cam : " << cam.getPos().getX() << ";" << cam.getPos().getY() << ";" << cam.getPos().getZ() << std::endl;
 	}
     }
+
     return 0;
 }
 

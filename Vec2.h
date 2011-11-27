@@ -5,14 +5,14 @@ class Vec2
 {
  public:
     Vec2(float x, float y);
-    Vec2();
     void setX(float x);
     void setY(float y);
+    void setXY(float x, float y);
     float getX();
     float getY();
- private:
-    float m_X;
-    float m_Y;
+ protected:
+    float _x;
+    float _y;
 };
 
 #endif

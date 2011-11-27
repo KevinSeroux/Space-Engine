@@ -4,74 +4,74 @@
 
 Material::Material(std::string name)
 {
-    m_name = name;
+    _name = name;
 }
 
 Material::Material() {}
 
-void Material::setDiffuseColor(Vec3 diffuseColor)
+void Material::setDiffuseColor(Vec3 *diffuseColor)
 {
-    m_diffuseColor = diffuseColor;
+    _diffuseColor = diffuseColor;
 }
 
-void Material::setAmbientColor(Vec3 ambientColor)
+void Material::setAmbientColor(Vec3 *ambientColor)
 {
-    m_ambientColor = ambientColor;
+    _ambientColor = ambientColor;
 }
 
-void Material::setSpecularColor(Vec3 specularColor)
+void Material::setSpecularColor(Vec3 *specularColor)
 {
-    m_specularColor = specularColor;
+    _specularColor = specularColor;
 }
 
 void Material::setShininess(float a)
 {
-    m_shininess = a;
+    _shininess = a;
 }
 
-void Material::setTransparency(float a)
+void Material::setBlend(float a)
 {
-    m_transparency = a;
+    _blend = a;
 }
 
 void Material::setTexture(std::string urlTexture)
 {
-    m_texture = urlTexture;
+    _texture = urlTexture;
 }
 
 //GET
 
 std::string Material::getName()
 {
-    return m_name;
+    return _name;
 }
 
-Vec3 Material::getDiffuseColor()
+Vec3* Material::getDiffuseColor()
 {
-    return m_diffuseColor;
+    return _diffuseColor;
 }
 
-Vec3 Material::getAmbientColor()
+Vec3* Material::getAmbientColor()
 {
-    return m_ambientColor;
+    return _ambientColor;
 }
 
-Vec3 Material::getSpecularColor()
+Vec3* Material::getSpecularColor()
 {
-    return m_specularColor;
+    return _specularColor;
 }
 
 float Material::getShininess()
 {
-    return m_shininess;
+    return _shininess;
 }
 
-float Material::getTransparency()
+float Material::getBlend()
 {
-    return m_transparency;
+    return _blend;
 }
 
 std::string Material::getTexture()
 {
-    return m_texture;
+    return _texture;
 }

@@ -1,24 +1,19 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include <iostream>
+#include "Vec2.h"
 
-class Vec3
+class Vec3 : public Vec2
 {
  public:
     Vec3(float x, float y, float z);
-    Vec3();
-    void setX(float x);
-    void setY(float y);
     void setZ(float z);
-
-    float getX();
-    float getY();
+    void setXZ(float x, float y);
+    void setYZ(float y, float z);
+    void setXYZ(float x, float y, float z);
     float getZ();
  private:
-    float m_X;
-    float m_Y;
-    float m_Z;
+    float _z;
 };
 
 #endif

@@ -9,29 +9,29 @@ class Material
  public:
     Material(std::string name);
     Material();
-    void setDiffuseColor(Vec3 diffuseColor);
-    void setAmbientColor(Vec3 ambientColor);
-    void setSpecularColor(Vec3 specularColor);
+    void setDiffuseColor(Vec3 *diffuseColor);
+    void setAmbientColor(Vec3 *ambientColor);
+    void setSpecularColor(Vec3 *specularColor);
     void setShininess(float a);
-    void setTransparency(float a);
+    void setBlend(float a);
     void setTexture(std::string urlTexture);
 
     std::string getName();
-    Vec3 getDiffuseColor();
-    Vec3 getAmbientColor();
-    Vec3 getSpecularColor();
+    Vec3* getDiffuseColor();
+    Vec3* getAmbientColor();
+    Vec3* getSpecularColor();
     float getShininess();
-    float getTransparency();
+    float getBlend();
     std::string getTexture();
 
  private:
-    std::string m_name;
-    Vec3 m_diffuseColor;
-    Vec3 m_ambientColor;
-    Vec3 m_specularColor;
-    float m_shininess;
-    float m_transparency;
-    std::string m_texture;
+    std::string _name;
+    Vec3 *_diffuseColor;
+    Vec3 *_ambientColor;
+    Vec3 *_specularColor;
+    float _shininess;
+    float _blend;
+    std::string _texture;
 };
 
 #endif
