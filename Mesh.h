@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "Triangle.h"
-#include "Drawer.h"
 
 class Mesh
 {
