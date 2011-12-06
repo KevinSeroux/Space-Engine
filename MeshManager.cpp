@@ -1,12 +1,15 @@
 #include "MeshManager.h"
 
+//GET
+
 void MeshManager::addMesh(Mesh *mesh)
 {
-    _meshs->push_back(mesh);
+    _meshes.push_back(mesh);
 }
 
-void MeshManager::exportToDrawer()
+//SET
+
+std::vector<Mesh*> MeshManager::getMeshes()
 {
-    for(unsigned int i(0); i < _meshs->size()-1; i++)
-	Drawer::addMesh(_meshs[i]);
+    return _meshes;
 }

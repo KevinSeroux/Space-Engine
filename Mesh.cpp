@@ -1,11 +1,37 @@
 #include "Mesh.h"
 
-void Mesh::addTriangle(Triangle *triangle)
+Mesh::Mesh(const int& numberTriangles, Triangle *triangles)
 {
-    _triangles->push_back(triangle);
+    _triangles = triangles;
+    _numberTriangles = numberTriangles;
 }
 
-std::vector<Triangle*>* Mesh::getTriangles()
+Mesh::Mesh(std::vector<Triangle*> triangles)
+{
+    unsigned int i(0);
+    while(i < triangles.size()-1)
+    {
+	_triangles[i] = triangles[i];
+	i++;
+    }
+    _numberTriangles = i;
+}
+
+//SET
+
+void Mesh::setTriangle(const int& index, Triangle *triangle)
+{
+    _triangles[index] = triangle;
+}
+
+//GET
+
+Triangle* Mesh::getTriangles()
 {
     return _triangles;
+}
+
+int Mesh::getNumberTriangles()
+{
+    return _numberTriangles;
 }

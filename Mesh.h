@@ -7,12 +7,16 @@
 class Mesh
 {
  public:
+    Mesh(const int& numberTriangles, Triangle *triangles);
+    Mesh(std::vector<Triangle*> triangles);
     //SET
-    void addTriangle(Triangle *triangle);
+    void setTriangle(const int& index, Triangle *triangle);
     //GET
-    std::vector<Triangle*>* getTriangles();
+    Triangle* getTriangles();
+    int getNumberTriangles();
  private:
-    std::vector<Triangle*> *_triangles;
+    Triangle *_triangles;
+    int _numberTriangles;
 };
 
 #endif

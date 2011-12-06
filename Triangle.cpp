@@ -10,6 +10,13 @@ Triangle::Triangle(Vertex *vertex1, Vertex *vertex2, Vertex *vertex3, Material *
     _material = material;
 }
 
+//OPERATOR
+
+Triangle* Triangle::operator=(Triangle *triangle)
+{
+    return (Triangle*)(triangle->getVertex1(), triangle->getVertex2(), triangle->getVertex3(), triangle->getMaterial());
+}
+
 //SET
 
 void Triangle::setVertex1(Vertex *vertex1)

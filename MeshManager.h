@@ -3,15 +3,16 @@
 
 #include <vector>
 #include "Mesh.h"
-#include "Drawer.h"
 
 class MeshManager
 {
  public:
+    //SET
     static void addMesh(Mesh *mesh);
-    static void exportToDrawer();
+    //GET
+    static std::vector<Mesh*> getMeshes();
  private:
-    std::vector<Mesh*> *_meshs;
+    static std::vector<Mesh*> _meshes;
 };
 
 #endif

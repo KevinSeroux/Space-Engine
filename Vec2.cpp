@@ -1,6 +1,12 @@
 #include "Vec2.h"
 
-Vec2::Vec2(float x(0), float y(0))
+Vec2::Vec2()
+{
+    _x = 0;
+    _y = 0;
+}
+
+Vec2::Vec2(float x = 0, float y = 0)
 {
     _x = x;
     _y = y;
@@ -34,4 +40,12 @@ float Vec2::getX()
 float Vec2::getY()
 {
     return _y;
+}
+
+bool Vec2::isNull()
+{
+    if(_x == 0 || _y == 0)
+	return true;
+    else
+	return false;
 }

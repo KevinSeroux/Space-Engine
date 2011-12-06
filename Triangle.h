@@ -9,6 +9,8 @@ class Triangle
  public:
     Triangle();
     Triangle(Vertex *vertex1, Vertex *vertex2, Vertex *vertex3, Material *material);
+    //OPERATOR
+    Triangle* operator=(Triangle *triangle);
     //SET
     void setVertex1(Vertex *vertex1);
     void setVertex2(Vertex *vertex2);
