@@ -2,6 +2,7 @@
 #define TRIANGLE_H
 
 #include "Vertex.h"
+#include "MaterialManager.h"
 #include "Material.h"
 
 class Triangle

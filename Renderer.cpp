@@ -1,5 +1,3 @@
-#define BUFFER_OFFSET(a) ((char*)NULL + (a))
-
 #include "Renderer.h"
 
 Renderer::Renderer()
@@ -26,54 +24,64 @@ void Renderer::renderMesh()
 		 sizeof(MeshManager::getMeshes()),
 		 NULL,
 		 GL_STREAM_DRAW);
+
     glBufferSubData(GL_ARRAY_BUFFER,
 		    0, //Quand on démarre la lecture dans le VBO
-		    sizeof(MeshManager::getMeshes()), //taille du tableau
-		    MeshManager::getMeshes());
-    glVertexPointer(3, GL_FLOAT, 0, 3*sizeof(float), BUFFER_OFFSET(0));
-    glNormalPointer(3, GL_FLOAT, 3, 3*sizeof(float), BUFFER_OFFSET(0));
+		    sizeof(MeshManager::getCoords()), //taille du tableau
+		    MeshManager::getMeshes()::getCoords());
+    glBufferSubData(GL_ARRAY_BUFFER,
+		    sizeof(MeshManager::getCoords()),
+		    sizeof(MeshManager::getNormals()),
+		    MeshManager::getNormals());
+    glVertexPointer(3, GL_FLOAT, 3, 0);
+    glNormalPointer(3, GL_FLOAT, 3, 3);
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
 
-    //ALGORITHME PAS TERRIBLE
-    int nbr(0);
+    unsigned int index(0);
+    unsigned int count(1);
 
-    for(unsigned int i(0); i < MeshManager::getMeshes().size()-1; i++)
+    for(unsigned int i(0); i < MaterialManager::getMaterials().size(); i++)
     {
-	for(unsigned int j(0); j < MeshManager::getMeshes()[j]->getNumberTriangles(); j++)
+	count = MaterialManager::getTrianglesIndexed[i];
+
+	if(i > 0) //If material
 	{
-	    if(!MeshManager::getMeshes()[i]->getTriangles()[j]->getMaterial()->getAmbientColor().isNull())
+	    if(MaterialManager::getMaterials()[i]->getAmbientColor() !=
+	       MaterialManager::getMaterials()[i-1]->getAmbientColor())
 	    {
 		glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT);
-		glColor3f(MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getAmbientColor()->getX(),
-			  MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getAmbientColor()->getY(),
-			  MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getAmbientColor()->getZ());
-		glDrawArrays(GL_TRIANGLES, 0 + nbr, 6 + nbr);
-		nbr += 6;
+		glColor3f(MaterialManager::getMaterials()[i]->getAmbientColor()->getX(),
+			MaterialManager::getMaterials()[i]->getAmbientColor()->getY(),
+			MaterialManager::getMaterials()[i]->getAmbientColor()->getZ());
 	    }
-	    if(!MeshManager::getMeshes[i]->getTriangles[j]->getMaterial()->getDiffuseColor().isNull())
+	    if(MaterialManager::getMaterials()[i]->getDiffuseColor() !=
+	       MaterialManager::getMaterials()[i-1]->getDiffuseColor())
 	    {
 		glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
-		glColor3f(MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getDiffuseColor()->getX(),
-			  MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getDiffuseColor()->getY(),
-			  MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getDiffuseColor()->getZ());
-		glDrawArrays(GL_TRIANGLES, 0 + nbr, 6 + nbr);
-		nbr += 6;
+		glColor3f(MaterialManager::getMaterials()[i]->getDiffuseColor()->getX(),
+			MaterialManager::getMaterials()[i]->getDiffuseColor()->getY(),
+			MaterialManager::getMaterials()[i]->getDiffuseColor()->getZ());
 	    }
-	    if(!MeshManager::getMeshes[i]->getTriangles[j]->getMaterial()->getSpecularColor().isNull())
+	    if(MaterialManager::getMaterials()[i]->getSpecularColor() !=
+	       MaterialManager::getMaterials()[i-1]->getSpecularColor())
 	    {
 		glColorMaterial(GL_FRONT_AND_BACK, GL_SPECULAR);
-		glColor3f(MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getSpecularColor()->getX(),
-			  MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getSpecularColor()->getY(),
-			  MeshManager::getMeshes()[i]->getTriangles()[j].getMaterial()->getSpecularColor()->getZ());
-		glDrawArrays(GL_TRIANGLES, 0 + nbr, 6 + nbr);
-		nbr += 6;
+		glColor3f(MaterialManager::getMaterials()[i]->getSpecularColor()->getX(),
+			MaterialManager::getMaterials()[i]->getSpecularColor()->getY(),
+			MaterialManager::getMaterials()[i]->getSpecularColor()->getZ());
+	    }
+	    if(MaterialManager::getMaterials()[i]->getShininess !=
+	       MaterialManager::getMaterials()[i-1]->getShininess)
+	    {
+		glMaterial(GL_FRONT_AND_BACK,GL_SHININESS,MaterialManager::getMaterials()[i]->getShininess);
 	    }
 	}
-    }
+	glDrawArrays(GL_TRIANGLES,3*index,3*count);
 
-    //FIN ALGORITHME PAS TERRIBLE
+	index = count;
+    }
 
     glDisableClientState(GL_NORMAL_ARRAY);
     glDisableClientState(GL_VERTEX_ARRAY);

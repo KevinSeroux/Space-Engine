@@ -7,7 +7,8 @@ Triangle::Triangle(Vertex *vertex1, Vertex *vertex2, Vertex *vertex3, Material *
     _vertex1 = vertex1;
     _vertex2 = vertex2;
     _vertex3 = vertex3;
-    _material = material;
+    MaterialManager::addMaterial(material);
+    _material = MaterialManager::getMaterials()[MaterialManager::getMaterials().size()-1];
 }
 
 //OPERATOR
