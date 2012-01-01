@@ -1,0 +1,39 @@
+#include "Vec3.h"
+
+Vec3::Vec3() : _x(0.0f), _y(0.0f), _z(0.0f) {}
+
+Vec3::Vec3(float &x, float &y, float &z) : _x(x), _y(y), _z(z) {}
+
+//SET
+
+void Vec3::setX(float &x)
+{
+    _x = x;
+}
+
+void Vec3::setY(float &y)
+{
+    _y = y;
+}
+
+void Vec3::setZ(float &z)
+{
+    _z = z;
+}
+
+//GET
+
+float& Vec3::getX()
+{
+    return _x;
+}
+
+float& Vec3::getY()
+{
+    return _y;
+}
+
+float& Vec3::getZ()
+{
+    return _z;
+}

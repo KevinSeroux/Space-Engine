@@ -9,3 +9,85 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
+____________________________________________________________________
+In file included from /usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/x86_64-unknown-linux-gnu/bits/c++allocator.h:34:0,
+                 from /usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/allocator.h:48,
+                 from /usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/vector:62,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.h:4,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:1:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/ext/new_allocator.h: In instantiation of ‘__gnu_cxx::new_allocator<Mesh&>’:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/allocator.h:92:11:   instantiated from ‘std::allocator<Mesh&>’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:73:60:   instantiated from ‘std::_Vector_base<Mesh&, std::allocator<Mesh&> >’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:180:11:   instantiated from ‘std::vector<Mesh&>’
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:8:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/ext/new_allocator.h:59:26: erreur: forming pointer to reference type ‘Mesh&’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/ext/new_allocator.h:60:26: erreur: forming pointer to reference type ‘Mesh&’
+In file included from /usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/vector:62:0,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.h:4,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:1:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/allocator.h: In instantiation of ‘std::allocator<Mesh&>’:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:73:60:   instantiated from ‘std::_Vector_base<Mesh&, std::allocator<Mesh&> >’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:180:11:   instantiated from ‘std::vector<Mesh&>’
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:8:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/allocator.h:97:26: erreur: forming pointer to reference type ‘Mesh&’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/allocator.h:98:26: erreur: forming pointer to reference type ‘Mesh&’
+In file included from /usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/vector:65:0,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.h:4,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:1:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In instantiation of ‘std::vector<Mesh&>’:
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:8:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:206:20: erreur: no members matching ‘std::vector<Mesh&>::_Base {aka std::_Vector_base<Mesh&, std::allocator<Mesh&> >}::_M_allocate’ in ‘std::vector<Mesh&>::_Base {aka struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >}’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:207:20: erreur: no members matching ‘std::vector<Mesh&>::_Base {aka std::_Vector_base<Mesh&, std::allocator<Mesh&> >}::_M_deallocate’ in ‘std::vector<Mesh&>::_Base {aka struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >}’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In member function ‘void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc>::value_type = Mesh&]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:8:27:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:828:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:828:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:830:6: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘construct’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:830:6: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:831:6: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:834:4: erreur: ‘end’ was not declared in this scope
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:834:4: erreur: ‘_M_insert_aux’ was not declared in this scope
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In copy constructor ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc> = std::vector<Mesh&>]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:15:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:280:9: erreur: ‘const class std::vector<Mesh&>’ has no member named ‘begin’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:280:9: erreur: ‘const class std::vector<Mesh&>’ has no member named ‘end’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:280:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:15:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:280:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In destructor ‘std::vector<_Tp, _Alloc>::~vector() [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:15:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:350:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:350:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In member function ‘std::vector<_Tp, _Alloc>::size_type std::vector<_Tp, _Alloc>::size() const [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc>::size_type = long unsigned int]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:27:45:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:571:74: erreur: ‘const struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:571:74: erreur: ‘const struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In member function ‘std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::operator[](std::vector<_Tp, _Alloc>::size_type) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc>::reference = Mesh&, std::vector<_Tp, _Alloc>::size_type = long unsigned int]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:29:38:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:696:46: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In constructor ‘std::_Vector_base<_Tp, _Alloc>::_Vector_base(std::size_t, const allocator_type&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::size_t = long unsigned int, std::_Vector_base<_Tp, _Alloc>::allocator_type = std::allocator<Mesh&>]’:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:279:52:   instantiated from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc> = std::vector<Mesh&>]’
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:15:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:123:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >’ has no member named ‘_M_allocate’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:123:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:124:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:124:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:125:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:125:2: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In destructor ‘std::_Vector_base<_Tp, _Alloc>::~_Vector_base() [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>]’:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:279:52:   instantiated from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc> = std::vector<Mesh&>]’
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:15:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:142:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:142:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:142:9: erreur: ‘struct std::_Vector_base<Mesh&, std::allocator<Mesh&> >::_Vector_impl’ has no member named ‘_M_end_of_storage’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:142:9: erreur: ‘_M_deallocate’ was not declared in this scope
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h: In constructor ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl(const _Tp_alloc_type&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::_Vector_base<_Tp, _Alloc>::_Tp_alloc_type = std::allocator<Mesh&>]’:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:121:20:   instantiated from ‘std::_Vector_base<_Tp, _Alloc>::_Vector_base(std::size_t, const allocator_type&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::size_t = long unsigned int, std::_Vector_base<_Tp, _Alloc>::allocator_type = std::allocator<Mesh&>]’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:279:52:   instantiated from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = Mesh&, _Alloc = std::allocator<Mesh&>, std::vector<_Tp, _Alloc> = std::vector<Mesh&>]’
+/home/hades/Projects/Space-Engine/src/GameEngine/MeshManager.cpp:15:12:   instantiated from here
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:87:71: erreur: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_M_start’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:87:71: erreur: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_M_finish’
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../include/c++/4.6.2/bits/stl_vector.h:87:71: erreur: using invalid field ‘std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_M_end_of_storage’
+make[2]: *** [CMakeFiles/GameEngine.dir/src/GameEngine/MeshManager.cpp.o] Erreur 1
+make[1]: *** [CMakeFiles/GameEngine.dir/all] Erreur 2
+make: *** [all] Erreur 2

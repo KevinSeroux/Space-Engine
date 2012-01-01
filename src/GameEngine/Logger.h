@@ -7,7 +7,7 @@
 class Logger
 {
  public:
-    static void DisplayMessage(const std::string& message);
+    static void displayMessage(const std::string& message);
 };
 
 #endif
