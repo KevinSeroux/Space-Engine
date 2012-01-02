@@ -3,7 +3,7 @@
 #include "Renderer.h"
 #include "VarManager.h"
 
-EngineInstance::EngineInstance(std::string windowTitle, int windowWidth, int windowHeight)
+EngineInstance::EngineInstance(std::string &windowTitle, unsigned int &windowWidth, unsigned int &windowHeight)
 {
     _window = 0;
     _glContext = 0;

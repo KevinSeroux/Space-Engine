@@ -10,7 +10,7 @@ void MeshManager::addMesh(Mesh &mesh)
 
 //GET
 
-std::vector<Mesh&> MeshManager::getMeshes()
+std::vector<Mesh>& MeshManager::getMeshes()
 {
     return _meshes;
 }
@@ -20,7 +20,7 @@ const unsigned int& MeshManager::getCountTriangles()
     return _countTriangles;
 }
 
-const float* MeshManager::getVerticesCoords()
+float* MeshManager::getVerticesCoords()
 {
     float* vertices;
     unsigned int index(0);

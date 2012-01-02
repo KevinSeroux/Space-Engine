@@ -14,7 +14,7 @@ void MaterialManager::deleteMaterial(const unsigned char& index)
 
 //GET
 
-std::vector<Material&> MaterialManager::getMaterials()
+std::vector<Material>& MaterialManager::getMaterials()
 {
     return _materials;
 }

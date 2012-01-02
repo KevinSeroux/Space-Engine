@@ -1,10 +1,10 @@
-#include <SDL/SDL.h>
+#include <SDL.h>
 #include <string>
 
 class EngineInstance
 {
  public:
-    EngineInstance(std::string windowTitle, int windowWidth, int windowHeight);
+    EngineInstance(std::string &windowTitle, int &windowWidth, int &windowHeight);
     ~EngineInstance();
     void mainLoop();
  private:

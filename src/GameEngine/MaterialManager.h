@@ -11,9 +11,9 @@ class MaterialManager
     static void addMaterial(Material &material);
     static void deleteMaterial(const unsigned char& index);
     //GET
-    static std::vector<Material&> getMaterials();
+    static std::vector<Material>& getMaterials();
  private:
-    static std::vector<Material&> _materials;
+    static std::vector<Material> _materials;
 };
 
 #endif

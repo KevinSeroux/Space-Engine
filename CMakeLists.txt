@@ -2,12 +2,11 @@ cmake_minimum_required(VERSION 2.6)
 
 project(GameEngine)
 set(LIBRARY_OUTPUT_PATH lib)
+set(CMAKE_CXX_FLAGS, "`sdl-config --cflags`")
 
 include_directories(
-	${sdl_include_dir}
-	${gl3_include_dir}
+	/usr/local/include/GL3
 )
-link_directories(${sdl_lib_dir})
 
 file(
 	GLOB_RECURSE
@@ -22,8 +21,8 @@ add_library(
 	${source_files}
 )
 
-target_link_libraries(
+link_libraries(
 	GameEngine
-	${sdl_lib_name}
+	GL3
 )
 	

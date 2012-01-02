@@ -6,15 +6,15 @@
 
 class MeshManager
 {
- public:
+    public:
     //SET
     static void addMesh(Mesh &mesh);
     //GET
-    static std::vector<Mesh&> getMeshes();
+    static std::vector<Mesh>& getMeshes();
     static const unsigned int& getCountTriangles();
-    static const float* getVerticesCoords();
+    static float* getVerticesCoords();
  private:
-    static std::vector<Mesh&> _meshes;
+    static std::vector<Mesh> _meshes;
     static unsigned int _countTriangles;
 };
 
