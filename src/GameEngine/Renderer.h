@@ -2,10 +2,10 @@
 #define DRAWER_H
 
 #ifdef WIN32
-#include <glew.h>
+#include <GL3/glew.h>
 #else
 #define GL3_PROTOTYPES 1
-#include <gl3.h>
+#include <GL3/gl3.h>
 #endif
 
 #include <vector>

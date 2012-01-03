@@ -1,7 +1,4 @@
 #include "EngineInstance.h"
-#include "Logger.h"
-#include "Renderer.h"
-#include "VarManager.h"
 
 EngineInstance::EngineInstance(std::string &windowTitle, unsigned int &windowWidth, unsigned int &windowHeight)
 {
