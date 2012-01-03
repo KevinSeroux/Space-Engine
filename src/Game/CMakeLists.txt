@@ -13,7 +13,7 @@ add_executable(
 
 target_link_libraries(
 	Game
-	../../lib/GameEngine
+	GameEngine
 )
 
 include_directories(

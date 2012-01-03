@@ -1,23 +1,22 @@
-set(LIBRARY_OUTPUT_PATH ../../lib)
+set(LIBRARY_OUTPUT_PATH lib)
 
 file(
 	GLOB_RECURSE
-	source_files
+	sources_files
 	*
 )
 
 add_library(
 	GameEngine
 	STATIC
-	${source_files}
+	${sources_files}
 )
+
+include_directories(../../include)
+
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}../../lib)
 
 target_link_libraries(
 	GameEngine
-	/usr/local/lib/SDL
-)
-
-include_directories(
-	/usr/local/include/GL3
-	/usr/local/include/SDL
+	SDL
 )

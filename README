@@ -12,3 +12,56 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
+____________________________________________________________________
+
+[ 92%] Built target GameEngine
+Linking CXX executable ../../bin/Game
+CMakeFiles/Game.dir/main.cpp.o: In function `main':
+main.cpp:(.text+0x0): multiple definition of `main'
+CMakeFiles/Game.dir/main.cpp.o:main.cpp:(.text+0x0): first defined here
+../GameEngine/lib/libGameEngine.a(EngineInstance.cpp.o): In function `EngineInstance::EngineInstance(std::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned int&, unsigned int&)':
+EngineInstance.cpp:(.text+0x5c): undefined reference to `std::basic_string<char, std::char_traits<char>, std::allocator<char> >& VarManager::convertToString<char const*>(char const* const&)'
+EngineInstance.cpp:(.text+0x11d): undefined reference to `SDL_CreateWindow'
+EngineInstance.cpp:(.text+0x136): undefined reference to `SDL_GL_CreateContext'
+../GameEngine/lib/libGameEngine.a(EngineInstance.cpp.o): In function `EngineInstance::~EngineInstance()':
+EngineInstance.cpp:(.text+0x1c0): undefined reference to `SDL_GL_DeleteContext'
+EngineInstance.cpp:(.text+0x1cf): undefined reference to `SDL_DestroyWindow'
+../GameEngine/lib/libGameEngine.a(EngineInstance.cpp.o): In function `EngineInstance::mainLoop()':
+EngineInstance.cpp:(.text+0x229): undefined reference to `SDL_GL_SwapWindow'
+EngineInstance.cpp:(.text+0x2c1): undefined reference to `std::basic_string<char, std::char_traits<char>, std::allocator<char> >& VarManager::convertToString<int>(int const&)'
+EngineInstance.cpp:(.text+0x2ce): undefined reference to `std::basic_string<char, std::char_traits<char>, std::allocator<char> >& VarManager::convertToString<long (long*)>(long ( const&)(long*))'
+../GameEngine/lib/libGameEngine.a(Renderer.cpp.o): In function `Renderer::Renderer()':
+Renderer.cpp:(.text+0xd): undefined reference to `Renderer::_buffer'
+Renderer.cpp:(.text+0x17): undefined reference to `glGenBuffers'
+../GameEngine/lib/libGameEngine.a(Renderer.cpp.o): In function `Renderer::~Renderer()':
+Renderer.cpp:(.text+0x2b): undefined reference to `Renderer::_buffer'
+Renderer.cpp:(.text+0x35): undefined reference to `glDeleteBuffers'
+../GameEngine/lib/libGameEngine.a(Renderer.cpp.o): In function `Renderer::renderMesh()':
+Renderer.cpp:(.text+0x52): undefined reference to `glClear'
+Renderer.cpp:(.text+0x58): undefined reference to `Renderer::_buffer'
+Renderer.cpp:(.text+0x64): undefined reference to `glBindBuffer'
+Renderer.cpp:(.text+0x80): undefined reference to `glBufferData'
+Renderer.cpp:(.text+0x8a): undefined reference to `glEnableVertexAttribArray'
+Renderer.cpp:(.text+0xaf): undefined reference to `glVertexAttribPointer'
+Renderer.cpp:(.text+0xc7): undefined reference to `glDrawArrays'
+Renderer.cpp:(.text+0xd1): undefined reference to `glDisableVertexAttribArray'
+Renderer.cpp:(.text+0xe0): undefined reference to `glBindBuffer'
+../GameEngine/lib/libGameEngine.a(MeshManager.cpp.o): In function `MeshManager::addMesh(Mesh&)':
+MeshManager.cpp:(.text+0x1c): undefined reference to `MeshManager::_countTriangles'
+MeshManager.cpp:(.text+0x24): undefined reference to `MeshManager::_countTriangles'
+MeshManager.cpp:(.text+0x30): undefined reference to `MeshManager::_meshes'
+../GameEngine/lib/libGameEngine.a(MeshManager.cpp.o): In function `MeshManager::getMeshes()':
+MeshManager.cpp:(.text+0x41): undefined reference to `MeshManager::_meshes'
+../GameEngine/lib/libGameEngine.a(MeshManager.cpp.o): In function `MeshManager::getCountTriangles()':
+MeshManager.cpp:(.text+0x4d): undefined reference to `MeshManager::_countTriangles'
+../GameEngine/lib/libGameEngine.a(MeshManager.cpp.o): In function `MeshManager::getVerticesCoords()':
+MeshManager.cpp:(.text+0x91): undefined reference to `MeshManager::_meshes'
+MeshManager.cpp:(.text+0xf5): undefined reference to `MeshManager::_meshes'
+MeshManager.cpp:(.text+0x159): undefined reference to `MeshManager::_meshes'
+MeshManager.cpp:(.text+0x1bd): undefined reference to `MeshManager::_meshes'
+MeshManager.cpp:(.text+0x221): undefined reference to `MeshManager::_meshes'
+../GameEngine/lib/libGameEngine.a(MeshManager.cpp.o):MeshManager.cpp:(.text+0x285): more undefined references to `MeshManager::_meshes' follow
+collect2: ld a retourné 1 code d'état d'exécution
+make[2]: *** [bin/Game] Erreur 1
+make[1]: *** [src/Game/CMakeFiles/Game.dir/all] Erreur 2
+make: *** [all] Erreur 2
