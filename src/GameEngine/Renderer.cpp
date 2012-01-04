@@ -1,5 +1,7 @@
 #include "Renderer.h"
 
+GLuint Renderer::_buffer;
+
 Renderer::Renderer()
 {
     glGenBuffers(1,&_buffer);

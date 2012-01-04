@@ -1,5 +1,8 @@
 #include "MeshManager.h"
 
+std::vector<Mesh> MeshManager::_meshes;
+unsigned int MeshManager::_countTriangles;
+
 //SET
 
 void MeshManager::addMesh(Mesh &mesh)
