@@ -15,7 +15,3 @@ target_link_libraries(
 	Game
 	GameEngine
 )
-
-include_directories(
-	../../include
-)
