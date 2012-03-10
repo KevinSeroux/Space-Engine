@@ -2,10 +2,7 @@
 
 int main()
 {
-    std::string title = "Title";
-    unsigned int width = 800;
-    unsigned int height = 600;
-    EngineInstance myInstance(title, width, height);
+    EngineInstance myInstance("Title", 800, 600);
 
     return 0;
 }

@@ -8,12 +8,12 @@ class MaterialManager
 {
  public:
     //SET
-    static void addMaterial(Material &material);
-    static void deleteMaterial(const unsigned char& index);
+    void addMaterial(Material &material);
+    void deleteMaterial(const unsigned char& index);
     //GET
-    static std::vector<Material>& getMaterials();
+    std::vector<Material>& getMaterials();
  private:
-    static std::vector<Material> _materials;
+    std::vector<Material> _materials;
 };
 
 #endif

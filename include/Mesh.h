@@ -7,13 +7,16 @@
 class Mesh
 {
  public:
-    Mesh(Triangle *triangles, unsigned int &numberTriangles);
+  ~Mesh();
+    Mesh(Triangle *triangles, unsigned int &countTriangles);
     //GET
     Triangle* getTriangles();
-    const unsigned int& getNumberTriangles();
+    const float* getVertices();
+    const unsigned int& getCountTriangles();
  private:
     Triangle *_triangles;
-    unsigned int _numberTriangles;
+    unsigned int _countTriangles;
+    float *_vertices;
 };
 
 #endif

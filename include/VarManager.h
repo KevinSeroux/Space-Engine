@@ -8,7 +8,7 @@ class VarManager
 {
  public:
     template<class T>
-    static const std::string& convertToString(const T& str)
+    const std::string& convertToString(const T& str) const
     {
 	std::ostringstream oss;
 	oss << str;

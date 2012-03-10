@@ -5,7 +5,7 @@ class Vec3
 {
  public:
     Vec3();
-    Vec3(float &x, float &y, float &z);
+    Vec3(const float &x, const float &y, const float &z);
     //SET
     void setX(float &x);
     void setY(float &y);

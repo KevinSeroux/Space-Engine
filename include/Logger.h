@@ -3,11 +3,18 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <ctime>
+#include "Engine.h"
 
 class Logger
 {
  public:
-    static void displayMessage(const std::string& message);
+  Logger();
+    void log(const std::string& message);
+ private:
+    std::ofstream _logFileStream;
+    bool _isError;
 };
 
 #endif

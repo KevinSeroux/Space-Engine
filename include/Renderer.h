@@ -1,5 +1,5 @@
-#ifndef DRAWER_H
-#define DRAWER_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
 #ifdef WIN32
 #include <GL3/glew.h>
@@ -9,17 +9,19 @@
 #endif
 
 #include <vector>
-#include "MeshManager.h"
+#include <iostream>
+#include "Engine.h"
 
 class Renderer
 {
  public:
     Renderer();
     ~Renderer();
-    static void render();
-    static void renderMesh();
+    void render();
+    void renderVAO();
+    void renderVBO();
  private:
-    static GLuint _buffer;
+    GLuint _buffer;
 };
 
 #endif

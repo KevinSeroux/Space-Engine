@@ -14,9 +14,36 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 ____________________________________________________________________
 
-CMakeFiles/Game.dir/main.cpp.o: In function `main':
-main.cpp:(.text+0x0): multiple definition of `main'
-CMakeFiles/Game.dir/main.cpp.o:main.cpp:(.text+0x0): first defined here
-collect2: ld a retourné 1 code d'état d'exécution
-make[2]: *** [bin/Game] Erreur 1
-make[1]: *** [src/Game/C
+[hades@CrysalArch Space-Engine]$ make
+Scanning dependencies of target GameEngine
+[  7%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/MaterialManager.cpp.o
+[ 15%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Mesh.cpp.o
+[ 23%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Triangle.cpp.o
+[ 30%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Engine.cpp.o
+In file included from /home/hades/Projects/Space-Engine/include/Engine.h:9:0,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:1:
+/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = const char*, std::string = std::basic_string<char>]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:11:94:   instantiated from here
+/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
+/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = long int(long int*)throw (), std::string = std::basic_string<char>]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:67:57:   instantiated from here
+/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
+/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = int, std::string = std::basic_string<char>]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:68:46:   instantiated from here
+/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
+[ 38%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/VarManager.cpp.o
+[ 46%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Material.cpp.o
+[ 53%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Logger.cpp.o
+In file included from /home/hades/Projects/Space-Engine/include/Logger.h:8:0,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/Logger.cpp:1:
+/home/hades/Projects/Space-Engine/include/Engine.h:21:11: erreur: ‘Logger’ does not name a type
+/home/hades/Projects/Space-Engine/include/Engine.h:33:5: erreur: ‘Logger’ does not name a type
+In file included from /home/hades/Projects/Space-Engine/include/Engine.h:9:0,
+                 from /home/hades/Projects/Space-Engine/include/Logger.h:8,
+                 from /home/hades/Projects/Space-Engine/src/GameEngine/Logger.cpp:1:
+/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = int, std::string = std::basic_string<char>]’:
+/home/hades/Projects/Space-Engine/src/GameEngine/Logger.cpp:7:234:   instantiated from here
+/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
+make[2]: *** [src/GameEngine/CMakeFiles/GameEngine.dir/Logger.cpp.o] Erreur 1
+make[1]: *** [src/GameEngine/CMakeFiles/GameEngine.dir/all] Erreur 2
+make: *** [all] Erreur 2

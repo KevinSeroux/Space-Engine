@@ -1,6 +1,6 @@
-#include "EngineInstance.h"
+#include "Engine.h"
 
-EngineInstance::EngineInstance(std::string &windowTitle, unsigned int &windowWidth, unsigned int &windowHeight)
+Engine::Engine(const std::string &windowTitle, const unsigned int &windowWidth, const unsigned int &windowHeight)
 {
     _window = 0;
     _glContext = 0;
@@ -8,7 +8,7 @@ EngineInstance::EngineInstance(std::string &windowTitle, unsigned int &windowWid
 
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-	Logger::displayMessage("Error while SDL initialization : " + VarManager::convertToString(SDL_GetError()));
+	_logger.log("Error while SDL initialization : " + _varManager.convertToString(SDL_GetError()));
 	delete this;
     }
     //OpenGL 3.1
@@ -27,7 +27,7 @@ EngineInstance::EngineInstance(std::string &windowTitle, unsigned int &windowWid
     GLenum initGLEW(glewInit());
     if(initGLEW != GLEW_OK)
     {
-	Logger::DisplayMessage("Error while GLEW initialization : " + glewGetErrorString(initGLEW));
+	_logger.log("Error while GLEW initialization : " + glewGetErrorString(initGLEW));
 	delete this;
     }
 #endif
@@ -36,18 +36,21 @@ EngineInstance::EngineInstance(std::string &windowTitle, unsigned int &windowWid
     {
 	mainLoop();
     }
-
-    delete this;
 }
 
-EngineInstance::~EngineInstance()
+Engine::~Engine()
 {
     SDL_GL_DeleteContext(_glContext);
     SDL_DestroyWindow(_window);
     SDL_Quit();
 }
 
-void EngineInstance::mainLoop()
+Engine& Engine::getInstance()
+{
+  return _instance;
+}
+
+void Engine::mainLoop()
 {
     SDL_WaitEvent(&_events);
     if(_events.window.event == SDL_WINDOWEVENT_CLOSE)
@@ -55,11 +58,37 @@ void EngineInstance::mainLoop()
 
     _startTime = SDL_GetTicks();
 
-    Renderer::render();
+    _renderer.render();
+
     SDL_GL_SwapWindow(_window); //Refresh glContext
 
     _time=(SDL_GetTicks()-_startTime)*0.001;
     if(SDL_GetTicks()-_startTime >= 1000)
-	Logger::displayMessage("Time: " + VarManager::convertToString(time) + "  |  FPS: " +
-			       VarManager::convertToString(1/_time));
+	_logger.log("Time: " + _varManager.convertToString(time) + "  |  FPS: " +
+			       _varManager.convertToString(1/_time));
+}
+
+const Renderer& Engine::getRenderer() const
+{
+  return _renderer;
+}
+
+MeshManager& Engine::getMeshManager()
+{
+  return _meshManager;
+}
+
+MaterialManager& Engine::getMaterialManager()
+{
+  return _materialManager;
+}
+
+const VarManager& Engine::getVarManager() const
+{
+  return _varManager;
+}
+
+const Logger& Engine::getLogger() const
+{
+  return _logger;
 }

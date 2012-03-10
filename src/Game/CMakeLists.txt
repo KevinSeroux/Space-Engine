@@ -11,6 +11,8 @@ add_executable(
 	${source_files}
 )
 
+link_directories(../../lib)
+
 target_link_libraries(
 	Game
 	GameEngine

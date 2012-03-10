@@ -2,7 +2,7 @@
 
 Vec3::Vec3() : _x(0.0f), _y(0.0f), _z(0.0f) {}
 
-Vec3::Vec3(float &x, float &y, float &z) : _x(x), _y(y), _z(z) {}
+Vec3::Vec3(const float &x, const float &y, const float &z) : _x(x), _y(y), _z(z) {}
 
 //SET
 
