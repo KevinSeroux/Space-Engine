@@ -2,11 +2,19 @@
 
 //SET
 
-Material::Material() {}
+Material::Material(std::string &name)
+{
+  _name = name;
+}
+
+void Material::setName(std::string &name)
+{
+  _name = name;
+}
 
 void Material::setDiffuseColor(Vec3 &diffuseColor)
 {
-    _diffuseColor = diffuseColor;
+  _diffuseColor = diffuseColor;
 }
 
 void Material::setAmbientColor(Vec3 &ambientColor)
@@ -35,6 +43,11 @@ void Material::setTextureURL(std::string &textureURL)
 }
 
 //GET
+
+std::string& Material::getName()
+{
+  return _name;
+}
 
 Vec3& Material::getDiffuseColor()
 {

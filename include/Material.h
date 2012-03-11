@@ -7,7 +7,8 @@
 class Material
 {
  public:
-    Material();
+  Material(std::string &name);
+    void setName(std::string &name);
     void setDiffuseColor(Vec3 &diffuseColor);
     void setAmbientColor(Vec3 &ambientColor);
     void setSpecularColor(Vec3 &specularColor);
@@ -15,6 +16,7 @@ class Material
     void setBlend(float &blend);
     void setTextureURL(std::string &textureURL);
 
+    std::string& getName();
     Vec3& getDiffuseColor();
     Vec3& getAmbientColor();
     Vec3& getSpecularColor();
@@ -23,6 +25,7 @@ class Material
     std::string& getTextureURL();
 
  private:
+    std::string _name;
     Vec3 _diffuseColor;
     Vec3 _ambientColor;
     Vec3 _specularColor;

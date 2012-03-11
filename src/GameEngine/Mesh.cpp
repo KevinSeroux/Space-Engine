@@ -12,6 +12,13 @@ Mesh::~Mesh()
   delete[] _vertices;
 }
 
+void Mesh::addTriangle(Triangle& triangle)
+{
+  _countTriangles++;
+  _triangles[_countTriangles] = triangle;
+
+}
+
 //GET
 
 Triangle* Mesh::getTriangles()
@@ -25,17 +32,17 @@ const float* Mesh::getVertices()
 
   for(unsigned int i(0); i < _countTriangles; i++)
     {
-      _vertices[index] = getTriangles()[i].getVertex1().getCoord().getX();
-      _vertices[index+1] = getTriangles()[i].getVertex1().getCoord().getY();
-      _vertices[index+2] = getTriangles()[i].getVertex1().getCoord().getZ();
+      _vertices[index] = getTriangles()[i].getVertex1().getVertexCoords().getX();
+      _vertices[index+1] = getTriangles()[i].getVertex1().getVertexCoords().getY();
+      _vertices[index+2] = getTriangles()[i].getVertex1().getVertexCoords().getZ();
 
-      _vertices[index+3] = getTriangles()[i].getVertex2().getCoord().getX();
-      _vertices[index+4] = getTriangles()[i].getVertex2().getCoord().getY();
-      _vertices[index+5] = getTriangles()[i].getVertex2().getCoord().getZ();
+      _vertices[index+3] = getTriangles()[i].getVertex2().getVertexCoords().getX();
+      _vertices[index+4] = getTriangles()[i].getVertex2().getVertexCoords().getY();
+      _vertices[index+5] = getTriangles()[i].getVertex2().getVertexCoords().getZ();
 
-      _vertices[index+6] = getTriangles()[i].getVertex3().getCoord().getX();
-      _vertices[index+7] = getTriangles()[i].getVertex3().getCoord().getY();
-      _vertices[index+8] = getTriangles()[i].getVertex3().getCoord().getZ();
+      _vertices[index+6] = getTriangles()[i].getVertex3().getVertexCoords().getX();
+      _vertices[index+7] = getTriangles()[i].getVertex3().getVertexCoords().getY();
+      _vertices[index+8] = getTriangles()[i].getVertex3().getVertexCoords().getZ();
 
       index+=9;
       }

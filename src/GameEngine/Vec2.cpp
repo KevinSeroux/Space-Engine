@@ -2,28 +2,36 @@
 
 Vec2::Vec2() : _x(0.0f), _y(0.0f) {}
 
-Vec2::Vec2(float &x, float &y) : _x(x), _y(y) {}
+Vec2::Vec2(float x, float y) : _x(x), _y(y) {}
 
 //SET
 
-void Vec2::setX(float &x)
+void Vec2::setX(float x)
 {
     _x = x;
 }
 
-void Vec2::setY(float &y)
+void Vec2::setY(float y)
 {
     _y = y;
 }
 
 //GET
 
-float& Vec2::getX()
+float Vec2::getX()
 {
     return _x;
 }
 
-float& Vec2::getY()
+float Vec2::getY()
 {
+    return _y;
+}
+
+float Vec2::operator[](unsigned char a)
+{
+  if(a == '0')
+    return _x;
+  else if(a == '1')
     return _y;
 }

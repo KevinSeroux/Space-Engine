@@ -5,7 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include "Engine.h"
+
+class Engine; //Protection against circular inclusions
 
 class Logger
 {

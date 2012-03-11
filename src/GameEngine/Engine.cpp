@@ -1,15 +1,33 @@
 #include "Engine.h"
 
-Engine::Engine(const std::string &windowTitle, const unsigned int &windowWidth, const unsigned int &windowHeight)
+Engine* Engine::_instance = NULL;
+
+Engine::Engine(const std::string& title = "", const unsigned int& width = 800, const unsigned int& height = 600)
 {
-    _window = 0;
+  _title = title;
+  _width = width;
+  _height = height;
+}
+
+Engine::~Engine()
+{
+    SDL_GL_DeleteContext(_glContext);
+    SDL_DestroyWindow(_window);
+    SDL_Quit();
+    if(_instance != NULL)
+      _instance = NULL;
+}
+
+void Engine::launch()
+{
+  _window = 0;
     _glContext = 0;
     _isEnd = false;
 
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-	_logger.log("Error while SDL initialization : " + _varManager.convertToString(SDL_GetError()));
-	delete this;
+      _logger.log("Error while SDL initialization : " + _varManager.convertToString(SDL_GetError()));
+      delete this;
     }
     //OpenGL 3.1
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -19,16 +37,16 @@ Engine::Engine(const std::string &windowTitle, const unsigned int &windowWidth, 
     //zBuffer
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-    _window = SDL_CreateWindow(windowTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			       windowWidth, windowHeight, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+    _window = SDL_CreateWindow(_title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+			       _width, _height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
     _glContext = SDL_GL_CreateContext(_window);
 
 #ifdef WIN32
     GLenum initGLEW(glewInit());
     if(initGLEW != GLEW_OK)
     {
-	_logger.log("Error while GLEW initialization : " + glewGetErrorString(initGLEW));
-	delete this;
+      _logger.log("Error while GLEW initialization : " + glewGetErrorString(initGLEW));
+      delete this;
     }
 #endif
 
@@ -38,15 +56,15 @@ Engine::Engine(const std::string &windowTitle, const unsigned int &windowWidth, 
     }
 }
 
-Engine::~Engine()
+void Engine::exit()
 {
-    SDL_GL_DeleteContext(_glContext);
-    SDL_DestroyWindow(_window);
-    SDL_Quit();
+  delete this;
 }
 
-Engine& Engine::getInstance()
+Engine* Engine::getInstance()
 {
+  if(_instance == NULL)
+      _instance = new Engine;
   return _instance;
 }
 
@@ -65,7 +83,7 @@ void Engine::mainLoop()
     _time=(SDL_GetTicks()-_startTime)*0.001;
     if(SDL_GetTicks()-_startTime >= 1000)
 	_logger.log("Time: " + _varManager.convertToString(time) + "  |  FPS: " +
-			       _varManager.convertToString(1/_time));
+	_varManager.convertToString(1/_time));
 }
 
 const Renderer& Engine::getRenderer() const
@@ -88,7 +106,12 @@ const VarManager& Engine::getVarManager() const
   return _varManager;
 }
 
-const Logger& Engine::getLogger() const
+Logger& Engine::getLogger()
 {
   return _logger;
+}
+
+ObjLoader& Engine::getObjLoader()
+{
+  return _objLoader;
 }

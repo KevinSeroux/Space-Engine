@@ -10,7 +10,8 @@
 
 #include <vector>
 #include <iostream>
-#include "Engine.h"
+
+class Engine; //Protection against circular inclusions
 
 class Renderer
 {

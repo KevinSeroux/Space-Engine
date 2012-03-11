@@ -2,32 +2,54 @@
 
 Vertex::Vertex() {}
 
-Vertex::Vertex(Vec3 &coord, Vec3 &normalCoord)
+Vertex::Vertex(Vec3 &vertexCoords, Vec3 &normalCoords, Vec2 &textureCoords)
 {
-    _coord = coord;
-    _normalCoord = normalCoord;
+    _vertexCoords = vertexCoords;
+    _textureCoords = textureCoords;
+    _normalCoords = normalCoords;
+}
+
+Vertex::Vertex(Vec3 &vertexCoords, Vec3 &normalCoords)
+{
+    _vertexCoords = vertexCoords;
+    _normalCoords = normalCoords;
+}
+
+Vertex::Vertex(Vec3 &vertexCoords)
+{
+    _vertexCoords = vertexCoords;
 }
 
 //SET
 
-void Vertex::setCoord(Vec3 &coord)
+void Vertex::setVertexCoords(Vec3 &vertexCoords)
 {
-    _coord = coord;
+    _vertexCoords = vertexCoords;
 }
 
-void Vertex::setNormal(Vec3 &normalCoord)
+void Vertex::setTextureCoords(Vec2 &textureCoords)
 {
-    _normalCoord = normalCoord;
+  _textureCoords = textureCoords;
+}
+
+void Vertex::setNormalCoords(Vec3 &normalCoords)
+{
+    _normalCoords = normalCoords;
 }
 
 //GET
 
-Vec3& Vertex::getCoord()
+Vec3& Vertex::getVertexCoords()
 {
-    return _coord;
+    return _vertexCoords;
 }
 
-Vec3& Vertex::getNormal()
+Vec2& Vertex::getTextureCoords()
 {
-    return _normalCoord;
+  return _textureCoords;
+}
+
+Vec3& Vertex::getNormalCoords()
+{
+    return _normalCoords;
 }

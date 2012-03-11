@@ -1,8 +1,13 @@
-#include "EngineInstance.h"
+#include "Engine.h"
 
 int main()
 {
-    EngineInstance myInstance("Title", 800, 600);
+  Engine* instance;
+  instance = Engine::getInstance();
+  std::string file = "Data/cube.obj";
+  instance->getMeshManager().addMesh(instance->getObjLoader().load(file));
+  instance->launch();
+  instance->exit();
 
     return 0;
 }

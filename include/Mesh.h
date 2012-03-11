@@ -7,8 +7,10 @@
 class Mesh
 {
  public:
-  ~Mesh();
+  Mesh();
     Mesh(Triangle *triangles, unsigned int &countTriangles);
+  ~Mesh();
+    void addTriangle(Triangle& triangle);
     //GET
     Triangle* getTriangles();
     const float* getVertices();

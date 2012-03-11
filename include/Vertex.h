@@ -8,17 +8,22 @@ class Vertex
 {
  public:
     Vertex();
-    Vertex(Vec3 &coord, Vec3 &normalCoord);
+    Vertex(Vec3 &vertexCoords, Vec3 &normalCoords, Vec2 &textureCoords);
+    Vertex(Vec3 &vertexCoords, Vec3 &normalCoords);
+    Vertex(Vec3 &vertexCoords);
     //SET
-    void setCoord(Vec3 &coord);
-    void setNormal(Vec3 &normal);
+    void setVertexCoords(Vec3 &vertexCoords);
+    void setTextureCoords(Vec2 &textureCoords);
+    void setNormalCoords(Vec3 &normalCoords);
     //GET
-    Vec3& getCoord();
-    Vec3& getNormal();
+    Vec3& getVertexCoords();
+    Vec2& getTextureCoords();
+    Vec3& getNormalCoords();
 
  private:
-    Vec3 _coord;
-    Vec3 _normalCoord;
+    Vec3 _vertexCoords;
+    Vec2 _textureCoords;
+    Vec3 _normalCoords;
 };
 
 #endif
