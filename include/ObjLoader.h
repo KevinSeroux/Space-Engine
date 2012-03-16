@@ -15,16 +15,15 @@ class Engine; //Protection againts circular inclusions
 class ObjLoader
 {
  public:
-  Mesh& load(std::string& file);
+  Mesh* load(std::string& file);
  private:
   std::ifstream _objStream;
   std::ifstream _mtlStream;
   unsigned char _lastMtl;
-  float _x;
-  unsigned int _id[8];
   std::vector<Vec3> _vertices;
   std::vector<Vec3> _normals;
   std::vector<Vec2> _textures;
+  std::vector<Triangle> _triangles;
 };
 
 #endif

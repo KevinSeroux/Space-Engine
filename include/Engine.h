@@ -17,7 +17,7 @@ class Engine
   void launch();
   void exit();
 
-    const Renderer& getRenderer() const;
+  const Renderer& getRenderer() const;
     MeshManager& getMeshManager();
     MaterialManager& getMaterialManager();
     const VarManager& getVarManager() const;
@@ -41,8 +41,6 @@ class Engine
     SDL_GLContext _glContext;
     SDL_Event _events;
     bool _isEnd;
-    int _startTime;
-    int _time;
 
     std::string _title;
     unsigned int _width;

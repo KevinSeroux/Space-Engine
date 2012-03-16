@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-Engine* Engine::_instance = NULL;
+Engine *Engine::_instance = 0;
 
 Engine::Engine(const std::string& title = "", const unsigned int& width = 800, const unsigned int& height = 600)
 {
@@ -11,11 +11,11 @@ Engine::Engine(const std::string& title = "", const unsigned int& width = 800, c
 
 Engine::~Engine()
 {
-    SDL_GL_DeleteContext(_glContext);
-    SDL_DestroyWindow(_window);
-    SDL_Quit();
-    if(_instance != NULL)
-      _instance = NULL;
+  SDL_GL_DeleteContext(_glContext);
+  SDL_DestroyWindow(_window);
+  SDL_Quit();
+  if(_instance != 0)
+    delete _instance;
 }
 
 void Engine::launch()
@@ -63,27 +63,20 @@ void Engine::exit()
 
 Engine* Engine::getInstance()
 {
-  if(_instance == NULL)
-      _instance = new Engine;
+  if(_instance == 0)
+    _instance = new Engine;
   return _instance;
 }
 
 void Engine::mainLoop()
 {
-    SDL_WaitEvent(&_events);
-    if(_events.window.event == SDL_WINDOWEVENT_CLOSE)
-	_isEnd = true;
-
-    _startTime = SDL_GetTicks();
-
     _renderer.render();
 
     SDL_GL_SwapWindow(_window); //Refresh glContext
 
-    _time=(SDL_GetTicks()-_startTime)*0.001;
-    if(SDL_GetTicks()-_startTime >= 1000)
-	_logger.log("Time: " + _varManager.convertToString(time) + "  |  FPS: " +
-	_varManager.convertToString(1/_time));
+    SDL_WaitEvent(&_events);
+    if(_events.window.event == SDL_WINDOWEVENT_CLOSE)
+	_isEnd = true;
 }
 
 const Renderer& Engine::getRenderer() const

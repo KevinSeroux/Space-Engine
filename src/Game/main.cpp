@@ -1,13 +1,15 @@
 #include "Engine.h"
+#include "Mesh.h"
+#include <iostream>
 
 int main()
 {
-  Engine* instance;
-  instance = Engine::getInstance();
+  Engine* instance = Engine::getInstance();
   std::string file = "Data/cube.obj";
-  instance->getMeshManager().addMesh(instance->getObjLoader().load(file));
+  Mesh *mesh = instance->getObjLoader().load(file);
+  instance->getMeshManager().addMesh(mesh);
   instance->launch();
   instance->exit();
 
-    return 0;
+  return 0;
 }

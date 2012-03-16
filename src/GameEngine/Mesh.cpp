@@ -1,22 +1,29 @@
 #include "Mesh.h"
 
-Mesh::Mesh(Triangle *triangles, unsigned int &countTriangles)
+Mesh::Mesh(Triangle triangles[], unsigned int &countTriangles)
 {
-    _triangles = triangles;
-    _countTriangles = countTriangles;
-    _vertices = new float[countTriangles*3];
+  _countTriangles = countTriangles;
+  _triangles = new Triangle[countTriangles];
+  for(unsigned int i(0); i < countTriangles; i++)
+    {
+      _triangles[i] = triangles[i];
+    }
+}
+
+Mesh::Mesh(std::vector<Triangle>& triangles)
+{
+  _countTriangles = triangles.size();
+  _triangles = new Triangle[_countTriangles];
+  for(unsigned int i(0); i < _countTriangles; i++)
+    {
+      _triangles[i] = triangles[i];
+    }
 }
 
 Mesh::~Mesh()
 {
+  delete[] _triangles;
   delete[] _vertices;
-}
-
-void Mesh::addTriangle(Triangle& triangle)
-{
-  _countTriangles++;
-  _triangles[_countTriangles] = triangle;
-
 }
 
 //GET
@@ -28,6 +35,7 @@ Triangle* Mesh::getTriangles()
 
 const float* Mesh::getVertices()
 {
+  _vertices = new float[_countTriangles*3];
   unsigned int index(0);
 
   for(unsigned int i(0); i < _countTriangles; i++)
@@ -45,7 +53,7 @@ const float* Mesh::getVertices()
       _vertices[index+8] = getTriangles()[i].getVertex3().getVertexCoords().getZ();
 
       index+=9;
-      }
+    }
 
   return _vertices;
 }

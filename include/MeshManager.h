@@ -8,11 +8,11 @@ class MeshManager
 {
     public:
     //SET
-    void addMesh(Mesh &mesh);
+    void addMesh(Mesh *mesh);
     //GET
-    std::vector<Mesh>& getMeshes();
+    std::vector<Mesh*> getMeshes();
  private:
-    std::vector<Mesh> _meshes;
+    std::vector<Mesh*> _meshes;
 };
 
 #endif

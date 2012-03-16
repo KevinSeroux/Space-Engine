@@ -14,47 +14,7 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 ____________________________________________________________________
 
-[hades@CrysalArch Space-Engine]$ make
-Scanning dependencies of target GameEngine
-[  7%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/MaterialManager.cpp.o
-[ 14%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Mesh.cpp.o
-[ 21%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Triangle.cpp.o
-[ 28%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Engine.cpp.o
-In file included from /home/hades/Projects/Space-Engine/include/Engine.h:9:0,
-                 from /home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:1:
-/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = const char*, std::string = std::basic_string<char>]’:
-/home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:29:99:   instantiated from here
-/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
-/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = long int(long int*)throw (), std::string = std::basic_string<char>]’:
-/home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:85:57:   instantiated from here
-/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
-/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = int, std::string = std::basic_string<char>]’:
-/home/hades/Projects/Space-Engine/src/GameEngine/Engine.cpp:86:37:   instantiated from here
-/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
-[ 35%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/VarManager.cpp.o
-[ 42%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Material.cpp.o
-[ 50%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Logger.cpp.o
-In file included from /home/hades/Projects/Space-Engine/include/Engine.h:9:0,
-                 from /home/hades/Projects/Space-Engine/src/GameEngine/Logger.cpp:2:
-/home/hades/Projects/Space-Engine/include/VarManager.h: In member function ‘const string& VarManager::convertToString(const T&) const [with T = int, std::string = std::basic_string<char>]’:
-/home/hades/Projects/Space-Engine/src/GameEngine/Logger.cpp:8:235:   instantiated from here
-/home/hades/Projects/Space-Engine/include/VarManager.h:15:17: attention : retourné la référence vers le temporaire [enabled by default]
-[ 57%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Vec2.cpp.o
-[ 64%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Renderer.cpp.o
-[ 71%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Vec3.cpp.o
-[ 78%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/ObjLoader.cpp.o
-/home/hades/Projects/Space-Engine/src/GameEngine/ObjLoader.cpp: In member function ‘Mesh& ObjLoader::load(std::string&)’:
-/home/hades/Projects/Space-Engine/src/GameEngine/ObjLoader.cpp:9:12: attention : reference to local variable ‘mesh’ returned [enabled by default]
-[ 85%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/Vertex.cpp.o
-[ 92%] Building CXX object src/GameEngine/CMakeFiles/GameEngine.dir/MeshManager.cpp.o
-Linking CXX static library ../../lib/libGameEngine.a
-[ 92%] Built target GameEngine
-Scanning dependencies of target Game
-[100%] Building CXX object src/Game/CMakeFiles/Game.dir/main.cpp.o
-Linking CXX executable ../../bin/Game
-../../lib/libGameEngine.a(ObjLoader.cpp.o): In function `ObjLoader::load(std::basic_string<char, std::char_traits<char>, std::allocator<char> >&)':
-ObjLoader.cpp:(.text+0x79): undefined reference to `Mesh::Mesh()'
-collect2: ld a retourné 1 code d'état d'exécution
-make[2]: *** [bin/Game] Erreur 1
-make[1]: *** [src/Game/CMakeFiles/Game.dir/all] Erreur 2
-make: *** [all] Erreur 2
+[hades@CrysalArch bin]$ ./Game
+glVertexAttribPointer();
+glEnableVertexAttribArray(0)
+*** glibc detected *** ./Game: malloc(): memory corruption: 0x00000000021f25f0 ***

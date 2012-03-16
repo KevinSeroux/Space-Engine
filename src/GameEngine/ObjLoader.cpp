@@ -1,17 +1,26 @@
 #include "ObjLoader.h"
 #include "Engine.h"
 
-Mesh& ObjLoader::load(std::string& file)
+Mesh* ObjLoader::load(std::string& file)
 {
+  bool isFind = false;
+  unsigned char placeDir;
+  for(placeDir = file.size()-1; placeDir > 0 && isFind == false; placeDir--)
+    {
+      if(file[placeDir] == '/')
+	isFind = true;
+    }
+  std::string dir = file.substr(0, placeDir+2);
+
   _objStream.open(file.c_str());
   if(_objStream)
     {
-      Mesh mesh;
       while(getline(_objStream, file))
 	{
 	  if(file.substr(0,7)=="mtllib ")
 	    {
-	      _mtlStream.open(file.substr(7, file.size()-7).c_str());
+	      std::string mtlFile = dir + file.substr(7, file.size()-7);
+	      _mtlStream.open(mtlFile.c_str());
 	      if(_mtlStream)
 		{
 		  while(getline(_mtlStream, file))
@@ -28,35 +37,37 @@ Mesh& ObjLoader::load(std::string& file)
 			{
 			  if(file.substr(1,2) == "a ")
 			    {
-			      sscanf(file.c_str(), "Ka %f %f %f",
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getAmbientColor()[0],
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getAmbientColor()[1],
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getAmbientColor()[2]);
+			      float x,y,z;
+			      sscanf(file.c_str(), "Ka %f %f %f", &x, &y, &z);
+			      Vec3 vec3(x,y,z);
+			      Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setAmbientColor(vec3);
 			    }
 			  else if(file.substr(1,2) == "d ")
 			    {
-			      sscanf(file.c_str(), "Kd %f %f %f",
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getDiffuseColor()[0],
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getDiffuseColor()[1],
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getDiffuseColor()[2]);
+			      float x,y,z;
+			      sscanf(file.c_str(), "Kd %f %f %f", &x, &y, &z);
+			      Vec3 vec3(x,y,z);
+			      Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setDiffuseColor(vec3);
 			    }
 			  else if(file.substr(1,2) == "s ")
 			    {
-			      sscanf(file.c_str(), "Ks %f %f %f",
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getSpecularColor()[0],
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getSpecularColor()[1],
-				     Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getSpecularColor()[2]);
+			      float x,y,z;
+			      sscanf(file.c_str(), "Ks %f %f %f", &x, &y, &z);
+			      Vec3 vec3(x,y,z);
+			      Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setSpecularColor(vec3);
 			    }
 			}
 		      else if(file.substr(0,3) == "Ns ")
 			{
-			  sscanf(file.c_str(), "Ns %f", _x);
-			  Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setShininess(_x);
+			      float x;
+			      sscanf(file.c_str(), "Ns %f", &x);
+			      Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setShininess(x);
 			}
 		      else if(file.substr(0,2) == "d ")
 			{
-			  sscanf(file.c_str(), "d %f", _x);
-			  Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setBlend(_x);
+			  float x;
+			  sscanf(file.c_str(), "d %f", &x);
+			  Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].setBlend(x);
 			}
 		    }
 		}
@@ -69,103 +80,98 @@ Mesh& ObjLoader::load(std::string& file)
 	    {
 	      if(file[1] == ' ')
 		{
-		  Vec3 vertex;
-		  sscanf(file.c_str(), "v %f %f %f",
-			 vertex[0],
-			 vertex[1],
-			 vertex[2]);
-		  _vertices.push_back(vertex);
+		  float x,y,z;
+		  sscanf(file.c_str(), "v %f %f %f", &x, &y, &z);
+		  Vec3 vec3(x,y,z);
+		  _vertices.push_back(vec3);
 		}
 	      else if(file.substr(1,2) == "n ")
 		{
-		  Vec3 normal;
-		  sscanf(file.c_str(), "vn %f %f %f",
-			 normal[0],
-			 normal[1],
-			 normal[2]);
-		  _normals.push_back(normal);
+		  float x,y,z;
+		  sscanf(file.c_str(), "vn %f %f %f", &x, &y, &z);
+		  Vec3 vec3(x,y,z);
+		  _normals.push_back(vec3);
 		}
 	      else if(file.substr(1,2) == "t ")
 		{
-		  Vec2 texture;
-		  sscanf(file.c_str(), "vt %f %f",
-			 texture[0],
-			 texture[1]);
-		  _textures.push_back(texture);
+		  float x,y;
+		  sscanf(file.c_str(), "vt %f %f", &x, &y);
+		  Vec2 vec2(x,y);
+		  _textures.push_back(vec2);
+		  std::cout << "vt " << x << " " << y << std::endl;
 		}
 	    }
 	  else if(file.substr(0,7) == "usemtl ")
 	    {
-	      for(_lastMtl = 0; Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getName() != file.substr(7, file.size()-7); _lastMtl++) {}
+	      for(_lastMtl = 0; file.substr(7,file.size()-7) != Engine::getInstance()->getMaterialManager().getMaterials()[_lastMtl].getName(); _lastMtl++) {}
 	    }
 	  else if(file.substr(0,2) == "f ")
 	    {
 	      if(file.find("//")!=std::string::npos)
 		{
-		  sscanf(file.c_str(), "f %d//%d %d//%d %d//%d",
-			 _id[0],_id[2], _id[3],_id[5], _id[6],_id[8]);
+		  unsigned int i[6];
+		  sscanf(file.c_str(), "f %d//%d %d//%d %d//%d", &i[0],&i[1], &i[2],&i[3], &i[4],&i[5]);
 
-		  Vec3 vec1(_vertices[_id[0]-1].getX(), _vertices[_id[0]-1].getY(), _vertices[_id[0]-1].getZ());
-		  Vec3 vec2(_normals[_id[0]-1].getX(), _normals[_id[0]-1].getY(), _normals[_id[0]-1].getZ());
+		  Vec3 vec1(_vertices[i[0]-1].getX(), _vertices[i[0]-1].getY(), _vertices[i[0]-1].getZ());
+		  Vec3 vec2(_normals[i[1]-1].getX(), _normals[i[1]-1].getY(), _normals[i[1]-1].getZ());
 
-		  Vec3 vec3(_vertices[_id[3]-1].getX(), _vertices[_id[3]-1].getY(), _vertices[_id[3]-1].getZ());
-		  Vec3 vec4(_normals[_id[5]-1].getX(), _normals[_id[5]-1].getY(), _normals[_id[5]-1].getZ());
+		  Vec3 vec3(_vertices[i[2]-1].getX(), _vertices[i[2]-1].getY(), _vertices[i[2]-1].getZ());
+		  Vec3 vec4(_normals[i[3]-1].getX(), _normals[i[3]-1].getY(), _normals[i[3]-1].getZ());
 
-		  Vec3 vec5(_vertices[_id[6]-1].getX(), _vertices[_id[6]-1].getY(), _vertices[_id[6]-1].getZ());
-		  Vec3 vec6(_normals[_id[8]-1].getX(), _normals[_id[8]-1].getY(), _normals[_id[8]-1].getZ());
+		  Vec3 vec5(_vertices[i[4]-1].getX(), _vertices[i[4]-1].getY(), _vertices[i[4]-1].getZ());
+		  Vec3 vec6(_normals[i[5]-1].getX(), _normals[i[5]-1].getY(), _normals[i[5]-1].getZ());
 
 		  Vertex vertex1(vec1, vec2);
 		  Vertex vertex2(vec3, vec4);
 		  Vertex vertex3(vec5, vec6);
 
-		  Triangle triangle(vertex1, vertex2, vertex3, _lastMtl);
-
-		  mesh.addTriangle(triangle);
+		  _triangles.push_back(Triangle(vertex1, vertex2, vertex3, _lastMtl));
 		}
 	      else if(file.find("/")!=std::string::npos)
 		{
-		  sscanf(file.c_str(), "f %d/%d/%d %d/%d/%d %d/%d/%d",
-			 _id[0],_id[1],_id[2], _id[3],_id[4],_id[5], _id[6],_id[7],_id[8]);
+		  unsigned int i[9];
+		  sscanf(file.c_str(), "f %d/%d/%d %d/%d/%d %d/%d/%d", &i[0],&i[1],&i[2], &i[3],&i[4],&i[5], &i[6],&i[7],&i[8]);
 
-		  Vec3 vec1(_vertices[_id[0]-1].getX(), _vertices[_id[0]-1].getY(), _vertices[_id[0]-1].getZ());
-		  Vec2 vec2(_textures[_id[1]-1].getX(), _textures[_id[1]-1].getY());
-		  Vec3 vec3(_normals[_id[2]-1].getX(), _normals[_id[2]-1].getY(), _normals[_id[0]-1].getZ());
+		  Vec3 vec1(_vertices[i[0]-1].getX(), _vertices[i[0]-1].getY(), _vertices[i[0]-1].getZ());
+		  Vec2 vec2(_textures[i[1]-1].getX(), _textures[i[1]-1].getY());
+		  Vec3 vec3(_normals[i[2]-1].getX(), _normals[i[2]-1].getY(), _normals[i[0]-1].getZ());
 
-		  Vec3 vec4(_vertices[_id[3]-1].getX(), _vertices[_id[3]-1].getY(), _vertices[_id[3]-1].getZ());
-		  Vec2 vec5(_textures[_id[4]-1].getX(), _textures[_id[4]-1].getY());
-		  Vec3 vec6(_normals[_id[5]-1].getX(), _normals[_id[5]-1].getY(), _normals[_id[5]-1].getZ());
+		  Vec3 vec4(_vertices[i[3]-1].getX(), _vertices[i[3]-1].getY(), _vertices[i[3]-1].getZ());
+		  Vec2 vec5(_textures[i[4]-1].getX(), _textures[i[4]-1].getY());
+		  Vec3 vec6(_normals[i[5]-1].getX(), _normals[i[5]-1].getY(), _normals[i[5]-1].getZ());
 
-		  Vec3 vec7(_vertices[_id[6]-1].getX(), _vertices[_id[6]-1].getY(), _vertices[_id[6]-1].getZ());
-		  Vec2 vec8(_textures[_id[7]-1].getX(), _textures[_id[7]-1].getY());
-		  Vec3 vec9(_normals[_id[8]-1].getX(), _normals[_id[8]-1].getY(), _normals[_id[8]-1].getZ());
+		  Vec3 vec7(_vertices[i[6]-1].getX(), _vertices[i[6]-1].getY(), _vertices[i[6]-1].getZ());
+		  Vec2 vec8(_textures[i[7]-1].getX(), _textures[i[7]-1].getY());
+		  Vec3 vec9(_normals[i[8]-1].getX(), _normals[i[8]-1].getY(), _normals[i[8]-1].getZ());
 
 		  Vertex vertex1(vec1, vec3, vec2);
 		  Vertex vertex2(vec4, vec6, vec5);
 		  Vertex vertex3(vec7, vec9, vec8);
 
-		  Triangle triangle(vertex1, vertex2, vertex3, _lastMtl);
-
-		  mesh.addTriangle(triangle);
+		  _triangles.push_back(Triangle(vertex1, vertex2, vertex3, _lastMtl));
 		}
 	      else
 		{
-		  sscanf(file.c_str(), "f %d %d %d",
-			 _id[0], _id[3], _id[6]);
+		  unsigned int x,y,z;
+		  sscanf(file.c_str(), "f %d %d %d", &x, &y, &z);
 
-		  Vec3 vec1(_vertices[_id[0]-1].getX(), _vertices[_id[0]-1].getY(), _vertices[_id[0]-1].getZ());
-		  Vec3 vec2(_vertices[_id[3]-1].getX(), _vertices[_id[3]-1].getY(), _vertices[_id[3]-1].getZ());
-		  Vec3 vec3(_vertices[_id[6]-1].getX(), _vertices[_id[6]-1].getY(), _vertices[_id[6]-1].getZ());
+		  Vec3 vec1(_vertices[x-1].getX(), _vertices[x-1].getY(), _vertices[x-1].getZ());
+		  Vec3 vec2(_vertices[y-1].getX(), _vertices[y-1].getY(), _vertices[y-1].getZ());
+		  Vec3 vec3(_vertices[z-1].getX(), _vertices[z-1].getY(), _vertices[z-1].getZ());
 
 		  Vertex vertex1(vec1);
 		  Vertex vertex2(vec2);
 		  Vertex vertex3(vec3);
 
-		  Triangle triangle(vertex1, vertex2, vertex3, _lastMtl);
-
-		  mesh.addTriangle(triangle);
+		  _triangles.push_back(Triangle(vertex1, vertex2, vertex3, _lastMtl));
 		}
 	    }
 	}
+      Mesh *mesh = new Mesh(_triangles);
+      _triangles.clear();
+      _vertices.clear();
+      _normals.clear();
+      _textures.clear();
       return mesh;
     }
   else

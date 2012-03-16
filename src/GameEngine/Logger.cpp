@@ -5,8 +5,9 @@ Logger::Logger()
 {
   _isError = false;
   struct tm dateTime;
-  const std::string str = "Logs/log-" + dateTime.tm_yday + '.' + dateTime.tm_mon + (1900+dateTime.tm_year) + '-' + dateTime.tm_hour + '.' + dateTime.tm_min + '.' + Engine::getInstance()->getVarManager().convertToString(dateTime.tm_sec) + ".log";
-  _logFileStream.open(str.c_str());
+  //const std::string str = "Logs/log-" + dateTime.tm_yday + '.' + dateTime.tm_mon + (1900+dateTime.tm_year) + '-' + dateTime.tm_hour + '.' + dateTime.tm_min + '.' + Engine::getInstance()->getVarManager().convertToString(dateTime.tm_sec) + ".log";
+  //_logFileStream.open(str.c_str());
+  _logFileStream.open("log.log");
   if(!_logFileStream)
     {
       _isError = true;
