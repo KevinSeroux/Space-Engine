@@ -5,3 +5,19 @@ It intended to improve me and to help others.
 glVertexAttribPointer();
 glEnableVertexAttribArray(0)
 *** glibc detected *** ./Game: malloc(): memory corruption: 0x00000000021f25f0 ***
+
+[hades@CrysalArch bin]$ ./Game
+glVertexAttribPointer();
+glEnableVertexAttribArray(0)
+[xcb] Unknown sequence number while appending request
+[xcb] Most likely this is a multi-threaded client and XInitThreads has not been called
+[xcb] Aborting, sorry about that.
+Game: xcb_io.c:160: append_pending_request: Assertion `!xcb_xlib_unknown_seq_number' failed.
+Abandon
+
+[hades@CrysalArch bin]$ ./Game
+glVertexAttribPointer();
+glEnableVertexAttribArray(0)
+glDrawArrays()
+glDisableVertexAttribArray(0)
+Erreur de segmentation

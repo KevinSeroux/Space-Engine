@@ -56,23 +56,33 @@ const float* Mesh::getVertices()
   _vertices = new float[_countTriangles*3];
   unsigned int index(0);
 
+  std::cout << "[------> VERTICES <------]" << std::endl;
   for(unsigned int i(0); i < _countTriangles; i++)
     {
       _vertices[index] = getTriangles()[i].getVertex1().getVertexCoords().getX();
+      std::cout << index << ": " << getTriangles()[i].getVertex1().getVertexCoords().getX() << std::endl;
       _vertices[index+1] = getTriangles()[i].getVertex1().getVertexCoords().getY();
+      std::cout << index+1 << ": " << getTriangles()[i].getVertex1().getVertexCoords().getY() << std::endl;
       _vertices[index+2] = getTriangles()[i].getVertex1().getVertexCoords().getZ();
+      std::cout << index+2 << ": " << getTriangles()[i].getVertex1().getVertexCoords().getZ() << std::endl;
 
       _vertices[index+3] = getTriangles()[i].getVertex2().getVertexCoords().getX();
+      std::cout << index+3 << ": " << getTriangles()[i].getVertex2().getVertexCoords().getX() << std::endl;
       _vertices[index+4] = getTriangles()[i].getVertex2().getVertexCoords().getY();
+      std::cout << index+4 << ": " << getTriangles()[i].getVertex2().getVertexCoords().getY() << std::endl;
       _vertices[index+5] = getTriangles()[i].getVertex2().getVertexCoords().getZ();
+      std::cout << index+5 << ": " << getTriangles()[i].getVertex2().getVertexCoords().getZ() << std::endl;
 
       _vertices[index+6] = getTriangles()[i].getVertex3().getVertexCoords().getX();
+      std::cout << index+6 << ": " << getTriangles()[i].getVertex3().getVertexCoords().getX() << std::endl;
       _vertices[index+7] = getTriangles()[i].getVertex3().getVertexCoords().getY();
+      std::cout << index+7 << ": " << getTriangles()[i].getVertex3().getVertexCoords().getY() << std::endl;
       _vertices[index+8] = getTriangles()[i].getVertex3().getVertexCoords().getZ();
+      std::cout << index+8 << ": " << getTriangles()[i].getVertex3().getVertexCoords().getZ() << std::endl;
 
       index+=9;
     }
-
+  std::cout << "[------> END VERTICES <------]" << std::endl;
   return _vertices;
 }
 

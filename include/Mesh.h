@@ -20,6 +20,7 @@
 #define MESH_H
 
 #include <vector>
+#include <iostream>
 #include "Triangle.h"
 
 class Mesh

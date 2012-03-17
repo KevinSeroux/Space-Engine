@@ -39,11 +39,11 @@ void Renderer::renderVAO()
 {
   for(unsigned int i(0); i < Engine::getInstance()->getMeshManager().getMeshes().size(); i++)
     {
-      //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, Engine::getInstance()->getMeshManager().getMeshes()[i]->getVertices()); //-> problem
-      //std::cout << "glVertexAttribPointer();" << std::endl;
+      glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, Engine::getInstance()->getMeshManager().getMeshes()[i]->getVertices()); //-> problem
+      std::cout << "glVertexAttribPointer();" << std::endl;
       glEnableVertexAttribArray(0);
       std::cout << "glEnableVertexAttribArray(0)" << std::endl;
-      //glDrawArrays(GL_TRIANGLES, 0, Engine::getInstance()->getMeshManager().getMeshes()[i]->getCountTriangles());
+      glDrawArrays(GL_TRIANGLES, 0, Engine::getInstance()->getMeshManager().getMeshes()[i]->getCountTriangles());
       std::cout << "glDrawArrays()" << std::endl;
       glDisableVertexAttribArray(0);
       std::cout << "glDisableVertexAttribArray(0)" << std::endl;
