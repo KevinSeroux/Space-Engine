@@ -18,75 +18,99 @@
 
 #include "Mesh.h"
 
-Mesh::Mesh(Triangle triangles[], unsigned int &countTriangles)
+Mesh::Mesh(Triangle triangles[], unsigned int countTriangles)
 {
-  _countTriangles = countTriangles;
-  _triangles = new Triangle[countTriangles];
-  for(unsigned int i(0); i < countTriangles; i++)
+    _countTriangles = countTriangles;
+    _vertices = 0;
+    _triangles = new Triangle[countTriangles];
+    for(unsigned int i(0); i < countTriangles; i++)
     {
-      _triangles[i] = triangles[i];
+	_triangles[i] = triangles[i];
     }
 }
 
 Mesh::Mesh(std::vector<Triangle>& triangles)
 {
-  _countTriangles = triangles.size();
-  _triangles = new Triangle[_countTriangles];
-  for(unsigned int i(0); i < _countTriangles; i++)
+    _countTriangles = triangles.size();
+    _vertices = 0;
+    _triangles = new Triangle[_countTriangles];
+    for(unsigned int i(0); i < _countTriangles; i++)
     {
-      _triangles[i] = triangles[i];
+	_triangles[i] = triangles[i];
     }
 }
 
 Mesh::~Mesh()
 {
-  delete[] _triangles;
-  delete[] _vertices;
+    delete[] _triangles;
+    if(_vertices != 0)
+	delete[] _vertices;
+}
+
+//SET
+
+void Mesh::setPosition(const Vec3& position)
+{
+    _position = position;
+}
+
+void Mesh::setRotation(const Vec3& rotation)
+{
+    _rotation = rotation;
+}
+
+void Mesh::setScale(const Vec3& scale)
+{
+    _scale = scale;
 }
 
 //GET
 
-Triangle* Mesh::getTriangles()
+Triangle* Mesh::getTriangles() const
 {
     return _triangles;
 }
 
 const float* Mesh::getVertices()
 {
-  _vertices = new float[_countTriangles*3];
-  unsigned int index(0);
+    _vertices = new float[_countTriangles*3*3];
+    unsigned int index(0);
 
-  std::cout << "[------> VERTICES <------]" << std::endl;
-  for(unsigned int i(0); i < _countTriangles; i++)
+    for(unsigned int i(0); i < _countTriangles; i++)
     {
-      _vertices[index] = getTriangles()[i].getVertex1().getVertexCoords().getX();
-      std::cout << index << ": " << getTriangles()[i].getVertex1().getVertexCoords().getX() << std::endl;
-      _vertices[index+1] = getTriangles()[i].getVertex1().getVertexCoords().getY();
-      std::cout << index+1 << ": " << getTriangles()[i].getVertex1().getVertexCoords().getY() << std::endl;
-      _vertices[index+2] = getTriangles()[i].getVertex1().getVertexCoords().getZ();
-      std::cout << index+2 << ": " << getTriangles()[i].getVertex1().getVertexCoords().getZ() << std::endl;
+	_vertices[index] = getTriangles()[i].getVertex1().getVertexCoords().getX();
+	_vertices[index+1] = getTriangles()[i].getVertex1().getVertexCoords().getY();
+	_vertices[index+2] = getTriangles()[i].getVertex1().getVertexCoords().getZ();
 
-      _vertices[index+3] = getTriangles()[i].getVertex2().getVertexCoords().getX();
-      std::cout << index+3 << ": " << getTriangles()[i].getVertex2().getVertexCoords().getX() << std::endl;
-      _vertices[index+4] = getTriangles()[i].getVertex2().getVertexCoords().getY();
-      std::cout << index+4 << ": " << getTriangles()[i].getVertex2().getVertexCoords().getY() << std::endl;
-      _vertices[index+5] = getTriangles()[i].getVertex2().getVertexCoords().getZ();
-      std::cout << index+5 << ": " << getTriangles()[i].getVertex2().getVertexCoords().getZ() << std::endl;
+	_vertices[index+3] = getTriangles()[i].getVertex2().getVertexCoords().getX();
+	_vertices[index+4] = getTriangles()[i].getVertex2().getVertexCoords().getY();
+	_vertices[index+5] = getTriangles()[i].getVertex2().getVertexCoords().getZ();
 
-      _vertices[index+6] = getTriangles()[i].getVertex3().getVertexCoords().getX();
-      std::cout << index+6 << ": " << getTriangles()[i].getVertex3().getVertexCoords().getX() << std::endl;
-      _vertices[index+7] = getTriangles()[i].getVertex3().getVertexCoords().getY();
-      std::cout << index+7 << ": " << getTriangles()[i].getVertex3().getVertexCoords().getY() << std::endl;
-      _vertices[index+8] = getTriangles()[i].getVertex3().getVertexCoords().getZ();
-      std::cout << index+8 << ": " << getTriangles()[i].getVertex3().getVertexCoords().getZ() << std::endl;
+	_vertices[index+6] = getTriangles()[i].getVertex3().getVertexCoords().getX();
+	_vertices[index+7] = getTriangles()[i].getVertex3().getVertexCoords().getY();
+	_vertices[index+8] = getTriangles()[i].getVertex3().getVertexCoords().getZ();
 
-      index+=9;
+	index+=9;
     }
-  std::cout << "[------> END VERTICES <------]" << std::endl;
-  return _vertices;
+    return _vertices;
 }
 
-const unsigned int& Mesh::getCountTriangles()
+const unsigned int& Mesh::getCountTriangles() const
 {
-  return _countTriangles;
+    return _countTriangles;
+}
+
+const Vec3& Mesh::getPosition() const
+{
+    return _position;
+}
+
+const Vec3& Mesh::getRotation() const
+{
+    return _rotation;
+}
+
+const Vec3& Mesh::getScale() const
+{
+    return _scale;
 }

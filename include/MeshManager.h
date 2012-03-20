@@ -24,12 +24,13 @@
 
 class MeshManager
 {
-    public:
+public:
     //SET
     void addMesh(Mesh *mesh);
+    void deleteMesh(const unsigned int index);
     //GET
     std::vector<Mesh*> getMeshes();
- private:
+private:
     std::vector<Mesh*> _meshes;
 };
 

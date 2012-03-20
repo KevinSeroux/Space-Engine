@@ -24,7 +24,7 @@
 
 class Vertex
 {
- public:
+public:
     Vertex();
     Vertex(Vec3 &vertexCoords, Vec3 &normalCoords, Vec2 &textureCoords);
     Vertex(Vec3 &vertexCoords, Vec3 &normalCoords);
@@ -38,7 +38,7 @@ class Vertex
     Vec2& getTextureCoords();
     Vec3& getNormalCoords();
 
- private:
+private:
     Vec3 _vertexCoords;
     Vec2 _textureCoords;
     Vec3 _normalCoords;

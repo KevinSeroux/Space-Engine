@@ -33,13 +33,12 @@ class Engine; //Protection against circular inclusions
 
 class Renderer
 {
- public:
+public:
     Renderer();
     ~Renderer();
     void render();
     void renderVAO();
-    void renderVBO();
- private:
+private:
     GLuint _buffer;
 };
 

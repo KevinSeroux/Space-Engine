@@ -48,8 +48,8 @@ float Vec2::getY()
 
 float Vec2::operator[](unsigned char a)
 {
-  if(a == '0')
-    return _x;
-  else if(a == '1')
-    return _y;
+    if(a == '0')
+	return _x;
+    else if(a == '1')
+	return _y;
 }

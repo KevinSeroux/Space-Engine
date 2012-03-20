@@ -21,7 +21,7 @@
 
 class Vec3
 {
- public:
+public:
     Vec3();
     Vec3(const float x, const float y, const float z);
     //SET
@@ -34,7 +34,7 @@ class Vec3
     float getZ();
     
     float operator[](unsigned char a);
- private:
+private:
     float _x;
     float _y;
     float _z;

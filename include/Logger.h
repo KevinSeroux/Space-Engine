@@ -28,10 +28,10 @@ class Engine; //Protection against circular inclusions
 
 class Logger
 {
- public:
-  Logger();
+public:
+    Logger();
     void log(const std::string& message);
- private:
+private:
     std::ofstream _logFileStream;
     bool _isError;
 };

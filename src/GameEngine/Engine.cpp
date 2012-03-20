@@ -20,32 +20,39 @@
 
 Engine *Engine::_instance = 0;
 
-Engine::Engine(const std::string& title = "", const unsigned int& width = 800, const unsigned int& height = 600)
+Engine::Engine()
 {
-  _title = title;
-  _width = width;
-  _height = height;
+    _title = "";
+    _width = 800;
+    _height = 600;
 }
 
 Engine::~Engine()
 {
-  SDL_GL_DeleteContext(_glContext);
-  SDL_DestroyWindow(_window);
-  SDL_Quit();
-  if(_instance != 0)
-    delete _instance;
+    SDL_GL_DeleteContext(_glContext);
+    SDL_DestroyWindow(_window);
+    SDL_Quit();
+    if(_instance != 0)
+	delete _instance;
+}
+
+void Engine::setWindowParameters(const std::string& title, const unsigned int width, const unsigned int height)
+{
+    _title = title;
+    _width = width;
+    _height = height;
 }
 
 void Engine::launch()
 {
-  _window = 0;
+    _window = 0;
     _glContext = 0;
     _isEnd = false;
 
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-      _logger.log("Error while SDL initialization : " + _varManager.convertToString(SDL_GetError()));
-      delete this;
+	_logger.log("Error while SDL initialization : " + _varManager.convertToString(SDL_GetError()));
+	delete this;
     }
     //OpenGL 3.1
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -63,8 +70,8 @@ void Engine::launch()
     GLenum initGLEW(glewInit());
     if(initGLEW != GLEW_OK)
     {
-      _logger.log("Error while GLEW initialization : " + glewGetErrorString(initGLEW));
-      delete this;
+	_logger.log("Error while GLEW initialization : " + glewGetErrorString(initGLEW));
+	delete this;
     }
 #endif
 
@@ -76,14 +83,14 @@ void Engine::launch()
 
 void Engine::exit()
 {
-  delete this;
+    delete this;
 }
 
 Engine* Engine::getInstance()
 {
-  if(_instance == 0)
-    _instance = new Engine;
-  return _instance;
+    if(_instance == 0)
+	_instance = new Engine;
+    return _instance;
 }
 
 void Engine::mainLoop()
@@ -99,30 +106,30 @@ void Engine::mainLoop()
 
 const Renderer& Engine::getRenderer() const
 {
-  return _renderer;
+    return _renderer;
 }
 
 MeshManager& Engine::getMeshManager()
 {
-  return _meshManager;
+    return _meshManager;
 }
 
 MaterialManager& Engine::getMaterialManager()
 {
-  return _materialManager;
+    return _materialManager;
 }
 
 const VarManager& Engine::getVarManager() const
 {
-  return _varManager;
+    return _varManager;
 }
 
 Logger& Engine::getLogger()
 {
-  return _logger;
+    return _logger;
 }
 
 ObjLoader& Engine::getObjLoader()
 {
-  return _objLoader;
+    return _objLoader;
 }

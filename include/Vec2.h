@@ -21,7 +21,7 @@
 
 class Vec2
 {
- public:
+public:
     Vec2();
     Vec2(float x, float y);
     //SET
@@ -32,7 +32,7 @@ class Vec2
     float getY();
     
     float operator[](unsigned char a);
- protected:
+protected:
     float _x;
     float _y;
 };

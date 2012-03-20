@@ -20,23 +20,33 @@
 #define MESH_H
 
 #include <vector>
-#include <iostream>
 #include "Triangle.h"
+#include "Vec3.h"
 
 class Mesh
 {
- public:
-    Mesh(Triangle triangles[], unsigned int &countTriangles);
+public:
+    Mesh(Triangle triangles[], unsigned int countTriangles);
     Mesh(std::vector<Triangle>& triangles);
     ~Mesh();
+    //SET
+    void setPosition(const Vec3& position);
+    void setRotation(const Vec3& rotation);
+    void setScale(const Vec3& scale);
     //GET
-    Triangle* getTriangles();
+    Triangle* getTriangles() const;
     const float* getVertices();
-    const unsigned int& getCountTriangles();
- private:
+    const unsigned int& getCountTriangles() const;
+    const Vec3& getPosition() const;
+    const Vec3& getRotation() const;
+    const Vec3& getScale() const;
+private:
     Triangle *_triangles;
     unsigned int _countTriangles;
     float *_vertices;
+    Vec3 _position;
+    Vec3 _rotation;
+    Vec3 _scale;
 };
 
 #endif

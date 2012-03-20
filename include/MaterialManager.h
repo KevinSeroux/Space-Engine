@@ -24,13 +24,13 @@
 
 class MaterialManager
 {
- public:
+public:
     //SET
     void addMaterial(Material &material);
     void deleteMaterial(const unsigned char& index);
     //GET
     std::vector<Material>& getMaterials();
- private:
+private:
     std::vector<Material> _materials;
 };
 

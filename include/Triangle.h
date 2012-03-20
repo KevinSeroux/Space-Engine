@@ -23,7 +23,7 @@
 
 class Triangle
 {
- public:
+public:
     Triangle();
     Triangle(Vertex &vertex1, Vertex &vertex2, Vertex &vertex3, const unsigned char &materialID);
     //SET
@@ -36,7 +36,7 @@ class Triangle
     Vertex& getVertex2();
     Vertex& getVertex3();
     const unsigned char getMaterialID();
- private :
+private :
     Vertex _vertex1;
     Vertex _vertex2;
     Vertex _vertex3;

@@ -24,14 +24,14 @@
 
 class VarManager
 {
- public:
+public:
     template<class T>
-    const std::string& convertToString(const T& str)
+	const std::string& convertToString(const T& str)
     {
 	_oss117 << str;
 	return _oss117.str();
     }
- private:
+private:
     std::ostringstream _oss117;
 };
 

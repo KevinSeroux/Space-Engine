@@ -30,20 +30,21 @@
 
 class Engine
 {
- public:
-  static Engine* getInstance();
-  void launch();
-  void exit();
+public:
+    static Engine* getInstance();
+    void setWindowParameters(const std::string& title, const unsigned int width, const unsigned int height);
+    void launch();
+    void exit();
 
-  const Renderer& getRenderer() const;
+    const Renderer& getRenderer() const;
     MeshManager& getMeshManager();
     MaterialManager& getMaterialManager();
     const VarManager& getVarManager() const;
     Logger& getLogger();
     ObjLoader& getObjLoader();
 
- private:
-    Engine(const std::string& title, const unsigned int& width, const unsigned int& height);
+private:
+    Engine();
     ~Engine();
     void mainLoop();
 

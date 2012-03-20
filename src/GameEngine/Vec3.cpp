@@ -58,10 +58,10 @@ float Vec3::getZ()
 
 float Vec3::operator[](unsigned char a)
 {
-  if(a == '0')
-    return _x;
-  else if(a == '1')
-    return _y;
-  else if(a == '2')
-    return _z;
+    if(a == '0')
+	return _x;
+    else if(a == '1')
+	return _y;
+    else if(a == '2')
+	return _z;
 }

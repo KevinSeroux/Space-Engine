@@ -22,7 +22,12 @@
 
 void MeshManager::addMesh(Mesh *mesh)
 {
-  _meshes.push_back(mesh);
+    _meshes.push_back(mesh);
+}
+
+void MeshManager::deleteMesh(const unsigned int index)
+{
+    _meshes.erase(_meshes.begin()+(index-1));
 }
 
 //GET

@@ -47,7 +47,7 @@ void Vertex::setVertexCoords(Vec3 &vertexCoords)
 
 void Vertex::setTextureCoords(Vec2 &textureCoords)
 {
-  _textureCoords = textureCoords;
+    _textureCoords = textureCoords;
 }
 
 void Vertex::setNormalCoords(Vec3 &normalCoords)
@@ -64,7 +64,7 @@ Vec3& Vertex::getVertexCoords()
 
 Vec2& Vertex::getTextureCoords()
 {
-  return _textureCoords;
+    return _textureCoords;
 }
 
 Vec3& Vertex::getNormalCoords()

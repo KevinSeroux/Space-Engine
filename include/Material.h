@@ -24,8 +24,8 @@
 
 class Material
 {
- public:
-  Material(std::string &name);
+public:
+    Material(std::string &name);
     void setName(std::string &name);
     void setDiffuseColor(Vec3 &diffuseColor);
     void setAmbientColor(Vec3 &ambientColor);
@@ -42,7 +42,7 @@ class Material
     float& getBlend();
     std::string& getTextureURL();
 
- private:
+private:
     std::string _name;
     Vec3 _diffuseColor;
     Vec3 _ambientColor;
